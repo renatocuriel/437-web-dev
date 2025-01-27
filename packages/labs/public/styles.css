@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-main);
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-primary);
+    padding: var(--spacing-medium);
+}
+
+.navbar h1 {
+    font-family: var(--font-heading);
+    margin: 0;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-medium);
+}
+
+.navbar a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #2c2c2c;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+    color: #f0f9f4;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--spacing-large);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: var(--spacing-large);
+    padding-bottom: var(--spacing-large);
+}
+
+.grid-item {
+    background-color: var(--color-secondary);
+    padding: var(--spacing-medium);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.img-container {
+    text-align: center;
+    margin: var(--spacing-medium) auto;
+}
+
+.img-container img {
+    display: inline-block; 
+    border-radius: 50%; 
+    border: 5px solid var(--color-primary); 
+    max-width: 100%; 
+    height: auto;
+}
+
+.about-me,
+.projects,
+.favorite-foods {
+    background-color: var(--color-secondary);
+    padding: var(--spacing-medium);
+    border-radius: var(--radius);
+    margin: var(--spacing-medium);
+}

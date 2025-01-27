@@ -1,0 +1,20 @@
+:root {
+    /* Colors */
+    --color-background: #cde9d8; /* Soft pastel green */
+    --color-text: #2c2c2c; /* Dark gray for high contrast */
+    --color-primary: #4caf50; /* Medium pastel green (Primary) */
+    --color-secondary: #81c784; /* Light pastel green (Secondary) */
+    --color-accent: #388e3c; /* Dark pastel green (Accent) */
+
+    /* Font Families */
+    --font-main: 'Roboto', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+
+    /* Spacing */
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 2rem;
+
+    /* Border Radius */
+    --radius: 10px;
+}
