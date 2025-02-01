@@ -43,6 +43,12 @@ body {
     color: #f0f9f4;
 }
 
+.navbar a.active {
+    color: white; /* Change text color to white */
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 .grid-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
