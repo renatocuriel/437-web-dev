@@ -132,6 +132,7 @@ class MyHeader extends HTMLElement {
         attachShadow(this, TEMPLATE);
         this.highlightActiveLink();
         this.setupMenuToggle();
+        this.setupDarkModeToggle();
     }
 
     highlightActiveLink() {
@@ -169,6 +170,33 @@ class MyHeader extends HTMLElement {
         document.addEventListener("click", (event) => {
             if (!this.contains(event.target) && !menuButton.contains(event.target)) {
                 menu.classList.remove("open");
+            }
+        });
+    }
+
+    setupDarkModeToggle() {
+        const darkModeCheckbox = this.shadowRoot.querySelector(".dark-mode-checkbox");
+    
+        if (!darkModeCheckbox) {
+            console.error("Dark mode checkbox not found in Shadow DOM");
+            return;
+        }
+    
+        // ✅ Load saved dark mode state from localStorage
+        const isDarkMode = localStorage.getItem("darkMode") === "true";
+        if (isDarkMode) {
+            document.body.classList.add("dark-mode");
+            darkModeCheckbox.checked = true;
+        }
+    
+        // ✅ Listen for checkbox toggle event
+        darkModeCheckbox.addEventListener("change", () => {
+            if (darkModeCheckbox.checked) {
+                document.body.classList.add("dark-mode");
+                localStorage.setItem("darkMode", "true"); // ✅ Save preference
+            } else {
+                document.body.classList.remove("dark-mode");
+                localStorage.setItem("darkMode", "false"); // ✅ Save preference
             }
         });
     }

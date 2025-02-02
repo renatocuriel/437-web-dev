@@ -18,3 +18,11 @@
     /* Border Radius */
     --radius: 10px;
 }
+
+body.dark-mode {
+    --color-background: #121212;  /* Dark gray (almost black) */
+    --color-text: #e0e0e0;  /* Light gray for good contrast */
+    --color-primary: #0d6efd;  /* Slightly dimmed blue */
+    --color-secondary: #495057;  /* Darker neutral gray */
+    --color-accent: #0dcaf0;  /* Brighter teal for contrast */
+}
