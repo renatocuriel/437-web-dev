@@ -17,6 +17,22 @@ TEMPLATE.innerHTML = `
             position: relative;
         }
 
+        .dark-mode-toggle {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            gap: var(--spacing-small);
+            cursor: pointer;
+            margin-right: var(--spacing-medium);
+        }
+
+        /* ✅ Style the Checkbox */
+        .dark-mode-checkbox {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+        }
+            
         .menu-button {
             display: block; /* ✅ Show button by default */
             background: none;
@@ -85,6 +101,12 @@ TEMPLATE.innerHTML = `
 
     <header class="navbar">
         <h1>Diego Curiel</h1>
+
+        <label class="dark-mode-toggle">
+            <input type="checkbox" class="dark-mode-checkbox" autocomplete="off" />
+            Dark mode
+        </label>
+
         <div class="menu">
             <button class="menu-button">☰</button>
             <nav>
