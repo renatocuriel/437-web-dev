@@ -163,7 +163,7 @@ class MyHeader extends HTMLElement {
         const menu = this.shadowRoot.querySelector("ul");
     
         menuButton.addEventListener("click", () => {
-            menu.classList.toggle("open"); // ✅ Toggle the "open" class
+            menu.classList.toggle("open"); // Toggle class
         });
     
         // Close menu when clicking outside of the header
@@ -182,25 +182,24 @@ class MyHeader extends HTMLElement {
             return;
         }
     
-        // ✅ Load saved dark mode state from localStorage
+        // Load saved dark mode state from localStorage
         const isDarkMode = localStorage.getItem("darkMode") === "true";
         if (isDarkMode) {
             document.body.classList.add("dark-mode");
             darkModeCheckbox.checked = true;
         }
     
-        // ✅ Listen for checkbox toggle event
+        // Listen for checkbox toggle event
         darkModeCheckbox.addEventListener("change", () => {
             if (darkModeCheckbox.checked) {
                 document.body.classList.add("dark-mode");
-                localStorage.setItem("darkMode", "true"); // ✅ Save preference
+                localStorage.setItem("darkMode", "true"); // Save preference
             } else {
                 document.body.classList.remove("dark-mode");
-                localStorage.setItem("darkMode", "false"); // ✅ Save preference
+                localStorage.setItem("darkMode", "false"); // Save preference
             }
         });
     }
 }
-
 
 customElements.define("my-header", MyHeader);
