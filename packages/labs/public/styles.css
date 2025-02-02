@@ -44,7 +44,7 @@ body {
 }
 
 .navbar a.active {
-    color: white; /* Change text color to white */
+    color: white;
     text-decoration: underline;
     font-weight: bold;
 }

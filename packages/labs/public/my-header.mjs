@@ -70,8 +70,10 @@ class MyHeader extends HTMLElement {
         const links = this.shadowRoot.querySelectorAll("a");
 
         links.forEach(link => {
-            if (link.getAttribute("href") === currentPage) {
-                link.classList.add("active");
+            // Normalize href and compare
+            const linkHref = link.getAttribute("href").replace("./", "");
+            if (currentPage === linkHref) {
+                link.classList.add("active"); // Add 'active' class to highlight the current page
             }
         });
     }
