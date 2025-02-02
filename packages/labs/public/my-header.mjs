@@ -65,27 +65,32 @@ class MyHeader extends HTMLElement {
     }
 
     highlightActiveLink() {
-        // Get the current page filename, ensuring it's always valid
         let currentPage = window.location.pathname.split("/").pop() || "index.html";
-
-        // Ensure we remove any leading "/" to match href attributes
+    
+        // Normalize by removing leading slash
         currentPage = currentPage.replace(/^\//, "");
-
-        // Select links inside the shadow DOM
+    
+        console.log("Current Page:", currentPage); // Debugging output
+    
+        // Select all links inside the Shadow DOM
         const links = this.shadowRoot.querySelectorAll("a");
-
+    
         links.forEach(link => {
             const linkHref = link.getAttribute("href");
-
-            // Normalize href (remove "./" and leading "/")
+    
+            // Normalize href
             const normalizedHref = linkHref.replace(/^\.\//, "").replace(/^\//, "");
-
+    
+            console.log("Comparing:", normalizedHref, "with", currentPage); // Debugging output
+    
             // Compare paths
             if (currentPage === normalizedHref) {
+                console.log("✅ Match found! Adding active class to:", normalizedHref);
                 link.classList.add("active");
             }
         });
     }
+    
 }
 
 customElements.define("my-header", MyHeader);
