@@ -54,12 +54,13 @@ TEMPLATE.innerHTML = `
 `;
 
 class MyHeader extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: "open" }).appendChild(TEMPLATE.content.cloneNode(true));
-    }
+    // constructor() {
+    //     super();
+    //     this.attachShadow({ mode: "open" }).appendChild(TEMPLATE.content.cloneNode(true));
+    // }
 
     connectedCallback() {
+        attachShadow(this, TEMPLATE);
         this.highlightActiveLink();
     }
 
