@@ -56,8 +56,7 @@ TEMPLATE.innerHTML = `
 class MyHeader extends HTMLElement {
     constructor() {
         super();
-        const shadowRoot = attachShadow(this, TEMPLATE);
-        this.shadowRoot = shadowRoot;
+        this.attachShadow({ mode: "open" }).appendChild(TEMPLATE.content.cloneNode(true));
     }
 
     connectedCallback() {
@@ -66,31 +65,33 @@ class MyHeader extends HTMLElement {
 
     highlightActiveLink() {
         let currentPage = window.location.pathname.split("/").pop() || "index.html";
-    
-        // Normalize by removing leading slash
+
+        if (currentPage === "") {
+            currentPage = "index.html"; // Ensure it's never empty
+        }
+
+        // Normalize the current page name
         currentPage = currentPage.replace(/^\//, "");
-    
-        console.log("Current Page:", currentPage); // Debugging output
-    
-        // Select all links inside the Shadow DOM
+
+        console.log("Current Page:", currentPage); // Debugging
+
         const links = this.shadowRoot.querySelectorAll("a");
-    
+
         links.forEach(link => {
             const linkHref = link.getAttribute("href");
-    
-            // Normalize href
-            const normalizedHref = linkHref.replace(/^\.\//, "").replace(/^\//, "");
-    
-            console.log("Comparing:", normalizedHref, "with", currentPage); // Debugging output
-    
-            // Compare paths
+
+            // Normalize href (remove "./" and leading "/")
+            const normalizedHref = linkHref.replace(/^(\.\/|\/)/, "");
+
+            console.log("Comparing:", normalizedHref, "with", currentPage); // Debugging
+
             if (currentPage === normalizedHref) {
                 console.log("✅ Match found! Adding active class to:", normalizedHref);
                 link.classList.add("active");
             }
         });
     }
-    
 }
+
 
 customElements.define("my-header", MyHeader);
