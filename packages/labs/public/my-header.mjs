@@ -65,15 +65,24 @@ class MyHeader extends HTMLElement {
     }
 
     highlightActiveLink() {
-        const currentPage = window.location.pathname.split("/").pop() || "index.html";
-        
+        // Get the current page filename, ensuring it's always valid
+        let currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+        // Ensure we remove any leading "/" to match href attributes
+        currentPage = currentPage.replace(/^\//, "");
+
+        // Select links inside the shadow DOM
         const links = this.shadowRoot.querySelectorAll("a");
 
         links.forEach(link => {
-            // Normalize href and compare
-            const linkHref = link.getAttribute("href").replace("./", "");
-            if (currentPage === linkHref) {
-                link.classList.add("active"); // Add 'active' class to highlight the current page
+            const linkHref = link.getAttribute("href");
+
+            // Normalize href (remove "./" and leading "/")
+            const normalizedHref = linkHref.replace(/^\.\//, "").replace(/^\//, "");
+
+            // Compare paths
+            if (currentPage === normalizedHref) {
+                link.classList.add("active");
             }
         });
     }
