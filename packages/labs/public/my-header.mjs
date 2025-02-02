@@ -32,6 +32,7 @@ TEMPLATE.innerHTML = `
 
         .navbar ul {
             display: none; /* ✅ Hide menu by default */
+            list-style: none; /* ✅ Removes bullet points */
             flex-direction: column;
             background-color: var(--color-primary);
             position: absolute;
@@ -55,6 +56,7 @@ TEMPLATE.innerHTML = `
 
             .navbar ul {
                 display: flex; /* ✅ Show menu in a row */
+                list-style: none;
                 flex-direction: row;
                 position: static;
                 width: auto;
