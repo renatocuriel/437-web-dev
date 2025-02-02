@@ -82,13 +82,16 @@ TEMPLATE.innerHTML = `
 
     <header class="navbar">
         <h1>Diego Curiel</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="favoritefoods.html">Favorite Foods</a></li>
-            </ul>
-        </nav>
+        <div class="menu">
+            <button class="menu-button">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="favoritefoods.html">Favorite Foods</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 `;
 
