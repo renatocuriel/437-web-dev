@@ -8,6 +8,11 @@ TEMPLATE.innerHTML = `
             width: 100%;
         }
 
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-medium);
+        }
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -102,20 +107,22 @@ TEMPLATE.innerHTML = `
     <header class="navbar">
         <h1>Diego Curiel</h1>
 
-        <label class="dark-mode-toggle">
-            <input type="checkbox" class="dark-mode-checkbox" autocomplete="off" />
-            Dark mode
-        </label>
+        <div class="navbar-right">
+            <label class="dark-mode-toggle">
+                <input type="checkbox" class="dark-mode-checkbox" autocomplete="off" />
+                Dark mode
+            </label>
 
-        <div class="menu">
-            <button class="menu-button">☰</button>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="favoritefoods.html">Favorite Foods</a></li>
-                </ul>
-            </nav>
+            <div class="menu">
+                <button class="menu-button">☰</button>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="favoritefoods.html">Favorite Foods</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 `;
