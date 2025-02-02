@@ -53,10 +53,28 @@ TEMPLATE.innerHTML = `
     </header>
 `;
 
-class myHeader extends HTMLElement {
-    connectedCallback() {
+class MyHeader extends HTMLElement {
+    constructor() {
+        super();
         const shadowRoot = attachShadow(this, TEMPLATE);
+        this.shadowRoot = shadowRoot;
+    }
+
+    connectedCallback() {
+        this.highlightActiveLink();
+    }
+
+    highlightActiveLink() {
+        const currentPage = window.location.pathname.split("/").pop() || "index.html";
+        
+        const links = this.shadowRoot.querySelectorAll("a");
+
+        links.forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+                link.classList.add("active");
+            }
+        });
     }
 }
 
-customElements.define("my-header", myHeader);
+customElements.define("my-header", MyHeader);
