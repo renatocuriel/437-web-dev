@@ -54,11 +54,6 @@ TEMPLATE.innerHTML = `
 `;
 
 class MyHeader extends HTMLElement {
-    // constructor() {
-    //     super();
-    //     this.attachShadow({ mode: "open" }).appendChild(TEMPLATE.content.cloneNode(true));
-    // }
-
     connectedCallback() {
         attachShadow(this, TEMPLATE);
         this.highlightActiveLink();
@@ -73,9 +68,6 @@ class MyHeader extends HTMLElement {
 
         // Normalize the current page name
         currentPage = currentPage.replace(/^\//, "");
-
-        console.log("Current Page:", currentPage); // Debugging
-
         const links = this.shadowRoot.querySelectorAll("a");
 
         links.forEach(link => {
@@ -84,10 +76,7 @@ class MyHeader extends HTMLElement {
             // Normalize href (remove "./" and leading "/")
             const normalizedHref = linkHref.replace(/^(\.\/|\/)/, "");
 
-            console.log("Comparing:", normalizedHref, "with", currentPage); // Debugging
-
             if (currentPage === normalizedHref) {
-                console.log("✅ Match found! Adding active class to:", normalizedHref);
                 link.classList.add("active");
             }
         });
