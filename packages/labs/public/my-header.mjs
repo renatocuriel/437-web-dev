@@ -57,6 +57,7 @@ TEMPLATE.innerHTML = `
             .navbar ul {
                 display: flex; /* ✅ Show menu in a row */
                 list-style: none;
+                gap: var(--spacing-medium); /* ✅ Add space between items */
                 flex-direction: row;
                 position: static;
                 width: auto;
