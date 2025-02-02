@@ -1,10 +1,10 @@
 :root {
     /* Colors */
-    --color-background: #cde9d8; /* Soft pastel green */
-    --color-text: #2c2c2c; /* Dark gray for high contrast */
-    --color-primary: #4caf50; /* Medium pastel green (Primary) */
-    --color-secondary: #81c784; /* Light pastel green (Secondary) */
-    --color-accent: #388e3c; /* Dark pastel green (Accent) */
+    --color-background: #f8f9fa; /* Light gray/white */
+    --color-text: #212529; /* Dark gray for readability */
+    --color-primary: #007bff; /* Standard blue */
+    --color-secondary: #6c757d; /* Neutral gray */
+    --color-accent: #17a2b8; /* Teal accent */
 
     /* Font Families */
     --font-main: 'Roboto', sans-serif;
