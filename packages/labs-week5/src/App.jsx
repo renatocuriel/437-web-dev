@@ -21,11 +21,16 @@ function App() {
   function toggleTaskCompletion(id) {
     const updatedTasks = tasks.map((task) => {
       if (task.id === id) {
-        return { ...task, completed: !task.completed };
+        const updatedTask = { ...task, completed: !task.completed };
+        return updatedTask
       }
       return task;
     });
     setTasks(updatedTasks);
+  }
+
+  function deleteTask(id) {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   }
 
   return (
@@ -37,7 +42,7 @@ function App() {
         <h1 className="text-xl font-bold mt-4">To do</h1>
         <ul>
           {tasks.map((task) => (
-            <TodoItem key={task.id} task={task} />
+            <TodoItem key={task.id} task={task} onToggle={toggleTaskCompletion} onDelete={deleteTask} />
           ))}
         </ul>
       </section>
