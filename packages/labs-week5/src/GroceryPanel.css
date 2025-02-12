@@ -1,0 +1,17 @@
+/* GroceryPanel.css */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    padding: 8px 16px; /* ✅ Add horizontal padding */
+    border: 1px solid #ddd; /* ✅ Add a subtle border */
+  }
+  
+  th {
+    background-color: #f4f4f4; /* ✅ Light gray background */
+    text-align: left;
+  }
+  

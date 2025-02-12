@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import TodoItem from "./TodoItem";
 import AddTaskForm from './AddTaskForm';
 import Modal from './Modal';
+import GroceryPanel from './GroceryPanel';
 
 const INITIAL_TASK_LIST = [
   { id: nanoid(), name: "Eat", completed: false },
@@ -57,6 +58,12 @@ function App() {
             <TodoItem key={task.id} task={task} onToggle={toggleTaskCompletion} onDelete={deleteTask} />
           ))}
         </ul>
+      </section>
+      
+      <hr className="my-4" />
+
+      <section>
+        <GroceryPanel onAddTask={addTask} />
       </section>
     </main>
   );
