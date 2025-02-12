@@ -3,6 +3,7 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import TodoItem from "./TodoItem";
 import AddTaskForm from './AddTaskForm';
+import Modal from './Modal';
 
 const INITIAL_TASK_LIST = [
   { id: nanoid(), name: "Eat", completed: false },
@@ -12,10 +13,12 @@ const INITIAL_TASK_LIST = [
 
 function App() {
   const [tasks, setTasks] = React.useState(INITIAL_TASK_LIST);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   function addTask(taskName) {
     const newTask = { id: nanoid(), name: taskName, completed: false };
     setTasks([...tasks, newTask]);
+    setIsModalOpen(false);
   }
 
   function toggleTaskCompletion(id) {
@@ -35,8 +38,17 @@ function App() {
 
   return (
     <main className="m-4">      
-      <AddTaskForm onNewTask={addTask} />
-      <button onClick={() => setTasks([])} className="p-1 bg-red-600 text-white">Delete all</button>
+      <button onClick={() => setIsModalOpen(true)} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 active:bg-blue-800">
+        New task
+      </button>
+
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        headerLabel="New Task"
+      >
+        <AddTaskForm onNewTask={addTask} />
+      </Modal>
 
       <section>
         <h1 className="text-xl font-bold mt-4">To do</h1>
