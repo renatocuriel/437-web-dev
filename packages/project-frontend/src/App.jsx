@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./screens/Home.jsx";
+import BookTracker from "./screens/BookTracker.jsx";
+import Finished from "./screens/Finished.jsx";
+import ToRead from "./screens/ToRead.jsx";
+import Sidebar from "./navigation/Sidebar.jsx";
+import Navbar from "./navigation/Navbar.jsx";
+import DarkModeToggle from "./components/DarkModeToggle.jsx";
+import "./index.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900">
+        <Sidebar />
+        <div className="flex-1">
+          <Navbar />
+          <DarkModeToggle />
+          <div className="p-6">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/book-tracker" element={<BookTracker />} />
+              <Route path="/to-read" element={<ToRead />} />
+              <Route path="/finished" element={<Finished />} />
+            </Routes>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
