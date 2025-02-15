@@ -3,7 +3,9 @@ import DarkModeToggle from "../components/DarkModeToggle.jsx";
 
 const Sidebar = () => {
   return (
-    <aside className="hidden md:flex flex-col w-64 h-screen bg-gray-800 text-white p-4">
+    // <aside className="hidden md:flex flex-col w-64 h-screen bg-gray-800 text-white p-4">
+    <aside className="hidden md:flex flex-col w-64 h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-4">
+
       <h1 className="text-xl font-bold">📚 Book Tracker</h1>
 
       <div className="mt-4">

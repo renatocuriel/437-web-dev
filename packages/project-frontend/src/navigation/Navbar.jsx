@@ -28,7 +28,8 @@ const Navbar = () => {
   }, [menuOpen]);
 
   return (
-    <nav className="flex items-center justify-between bg-gray-800 text-white p-4 md:hidden">
+    //<nav className="flex items-center justify-between bg-gray-800 text-white p-4 md:hidden">
+    <nav className="relative flex items-center justify-between bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-4 md:hidden shadow-md">
       {/* Hamburger Button (Mobile Only) */}
       <button
         ref={buttonRef}
