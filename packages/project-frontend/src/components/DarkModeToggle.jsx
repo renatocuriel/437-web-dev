@@ -11,7 +11,7 @@ const DarkModeToggle = () => {
   return (
     <button
       onClick={toggleDarkMode}
-      className="px-4 py-2 rounded-lg bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-white shadow-md hover:bg-gray-400 dark:hover:bg-gray-600 transition"
+      className="btn-primary shadow-custom"
     >
       {darkMode ? "Light Mode" : "Dark Mode"}
     </button>

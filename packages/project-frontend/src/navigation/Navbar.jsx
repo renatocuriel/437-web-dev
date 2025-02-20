@@ -28,37 +28,30 @@ const Navbar = () => {
   }, [menuOpen]);
 
   return (
-    //<nav className="flex items-center justify-between bg-gray-800 text-white p-4 md:hidden">
-    <nav className="relative flex items-center justify-between bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-4 md:hidden shadow-md">
-      {/* Hamburger Button (Mobile Only) */}
-      <button
-        ref={buttonRef}
-        onClick={() => setMenuOpen(!menuOpen)}
-        className="text-2xl text-white"
-      >
+    <nav className="relative flex items-center justify-between bg-container text-gray-900 dark:text-gray-100 p-4 md:hidden shadow-custom border-highlight">
+      <button ref={buttonRef} onClick={() => setMenuOpen(!menuOpen)} className="text-2xl text-gray-900 dark:text-white">
         ☰
       </button>
 
-      {/* Centered Title */}
-      <h1 className="text-lg font-bold">📚 Book Tracker</h1>
+      <h1 className="text-lg font-bold text-gray-900 dark:text-white">Book Tracker</h1>
 
-      {/* Dark Mode Toggle */}
       <DarkModeToggle />
 
-
-      {/* Mobile Menu Dropdown */}
       {menuOpen && (
-        <div ref={dropdownRef} className="absolute top-14 left-0 w-full bg-gray-800 text-white p-4 shadow-md">
-          <Link to="/" className="block py-2" onClick={() => setMenuOpen(false)}>
+        <div ref={dropdownRef} className="absolute top-14 left-0 w-full bg-container text-gray-900 dark:text-white p-4 border-highlight shadow-custom">
+          <Link to="/" className="block py-2 px-4 rounded hover:bg-gray-700" onClick={() => setMenuOpen(false)}>
             Dashboard
           </Link>
-          <Link to="/book-tracker" className="block py-2" onClick={() => setMenuOpen(false)}>
+          <Link to="/suggested-books" className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700" onClick={() => setMenuOpen(false)}>
+            Suggested Books
+          </Link>
+          <Link to="/book-tracker" className="block py-2 px-4 rounded hover:bg-gray-700" onClick={() => setMenuOpen(false)}>
             Book Tracker
           </Link>
-          <Link to="/to-read" className="block py-2" onClick={() => setMenuOpen(false)}>
+          <Link to="/to-read" className="block py-2 px-4 rounded hover:bg-gray-700" onClick={() => setMenuOpen(false)}>
             To Read
           </Link>
-          <Link to="/finished" className="block py-2" onClick={() => setMenuOpen(false)}>
+          <Link to="/finished" className="block py-2 px-4 rounded hover:bg-gray-700" onClick={() => setMenuOpen(false)}>
             Finished Books
           </Link>
         </div>

@@ -2,17 +2,90 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Smooth transitions */
 html {
   transition: background-color 0.3s ease, color 0.3s ease;
-  background-color: #f8fafc;
-  color: #1a1a1a;
 }
 
+/* Light Mode */
+html {
+  background-color: #C2BBAA; /* Muted beige */
+  color: #3C3C3C; /* Neutral dark gray */
+}
+
+/* Dark Mode */
 html.dark {
-  background-color: #121212;
-  color: #e4e4e4;
+  background-color: #606B62; /* Deep green-gray */
+  color: #E7E3DA; /* Soft off-white */
 }
 
-body {
-  font-family: "Inter", sans-serif;
+/* Containers & Cards */
+.bg-container {
+  background-color: #E7E3DA; /* Lighter off-white */
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
 }
+
+.dark .bg-container {
+  background-color: #787D72; /* Muted green-gray */
+  box-shadow: 0px 4px 10px rgba(255, 204, 0, 0.2);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #787D72; /* Muted desaturated green */
+  color: #F8F6F2; /* Soft off-white */
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #959588; /* Slightly lighter muted green */
+}
+
+.dark .btn-primary {
+  background-color: #C2BBAA; /* Beige for contrast */
+  color: #3C3C3C; /* Deep neutral */
+}
+
+.dark .btn-primary:hover {
+  background-color: #BEA68C;
+}
+
+/* Outlines & Borders */
+.border-highlight {
+  border: 2px solid #BEA68C; /* Warm tan accent */
+}
+
+.dark .border-highlight {
+  border: 2px solid #BEA68C;
+}
+
+/* Text Selection */
+::selection {
+  background: #BEA68C;
+  color: #3C3C3C;
+}
+
+.dark ::selection {
+  background: #BEA68C;
+  color: #E7E3DA;
+}
+
+/* Smooth scrolling with momentum */
+/* .scroll-container {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+} */
+
+/* Stretchy bounce effect on Apple devices */
+/* @supports (-webkit-touch-callout: none) {
+  .scroll-container {
+    overscroll-behavior-y: auto;
+  }
+} */
