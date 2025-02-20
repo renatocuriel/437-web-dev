@@ -1,17 +1,53 @@
-import { useState } from "react";
+// import { useState } from "react";
+
+// const DarkModeToggle = () => {
+//   const [darkMode, setDarkMode] = useState(false);
+
+//   const toggleDarkMode = () => {
+//     setDarkMode(!darkMode);
+//     document.documentElement.classList.toggle("dark");
+//   };
+
+//   return (
+//     <button
+//       onClick={toggleDarkMode}
+//       className="btn-primary shadow-custom"
+//     >
+//       {darkMode ? "Light Mode" : "Dark Mode"}
+//     </button>
+//   );
+// };
+
+// export default DarkModeToggle;
+
+import { useState, useEffect } from "react";
 
 const DarkModeToggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check localStorage for saved theme preference
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    // Apply dark mode class on mount
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle("dark");
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    document.documentElement.classList.toggle("dark", newDarkMode);
+    localStorage.setItem("theme", newDarkMode ? "dark" : "light");
   };
 
   return (
     <button
       onClick={toggleDarkMode}
-      className="btn-primary shadow-custom"
+      className="btn-primary"
     >
       {darkMode ? "Light Mode" : "Dark Mode"}
     </button>
