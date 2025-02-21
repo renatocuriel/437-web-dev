@@ -15,7 +15,7 @@ const SuggestedBooks = ({ books, limit }) => {
       </ul>
       {limit && (
         <div className="mt-4 text-right">
-          <a href="/suggested-books" className="hover:underline">
+          <a href="/suggested-books" className="btn-primary">
             View More →
           </a>
         </div>
