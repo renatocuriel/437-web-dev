@@ -28,7 +28,7 @@ const CurrentlyReading = () => {
         />
       </div>
       {/* <div className=" ml-4"> */}
-      <div className="flex flex-col justify-between ml-6 w-full">
+      <div className="flex flex-col items-center md:items-start mt-4 md:ml-6 md:align-left w-full">
         <h2 className="text-xl font-bold">Currently Reading</h2>
         <p className="font-semibold">{book.title}</p>
         <p className="text-sm text-gray-600 dark:text-gray-300">{book.author}</p>

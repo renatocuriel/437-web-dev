@@ -20,14 +20,14 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Profile Card at the bottom */}
-      <div className="bg-container mt-6">
-        <ProfileCard />
-      </div>
-
       {/* Suggested Books Section */}
       <div className="bg-container mt-6">
         <SuggestedBooks books={["The Pragmatic Programmer", "Clean Code", "Refactoring", "Design Patterns"]} limit={3} />
+      </div>
+
+      {/* Profile Card at the bottom */}
+      <div className="bg-container mt-6">
+        <ProfileCard />
       </div>
     </div>
   );
