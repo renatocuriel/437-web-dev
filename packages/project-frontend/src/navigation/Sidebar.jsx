@@ -19,30 +19,11 @@ const Sidebar = () => {
         <DarkModeToggle />
       </div>
 
-      {/* <nav className="mt-4 space-y-2">
-        <Link to="/" className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700">
-          Dashboard
-        </Link>
-        <Link to="/suggested-books" className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700">
-          Suggested Books
-        </Link>
-        <Link to="/currently-reading" className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700">
-          Currently Reading
-        </Link>
-        <Link to="/to-read" className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700">
-          To Read
-        </Link>
-        <Link to="/finished" className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700">
-          Finished Books
-        </Link>
-      </nav> */}
-
       <nav className="mt-4 space-y-2">
         <Link to="/" className={linkClass("/")}>Dashboard</Link>
-        <Link to="/suggested-books" className={linkClass("/suggested-books")}>Suggested Books</Link>
         <Link to="/currently-reading" className={linkClass("/currently-reading")}>Currently Reading</Link>
-        <Link to="/to-read" className={linkClass("/to-read")}>To Read</Link>
-        <Link to="/finished" className={linkClass("/finished")}>Finished Books</Link>
+        <Link to="/suggested-books" className={linkClass("/suggested-books")}>Suggested Books</Link>
+        <Link to="/my-lists" className={linkClass("/my-lists")}>My Lists</Link>
       </nav>
     </aside>
   );

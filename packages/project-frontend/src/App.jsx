@@ -2,8 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./screens/Dashboard.jsx";
 import SuggestedBooksPage from "./screens/SuggestedBooksPage.jsx";
 import CurrentlyReadingPage from "./screens/CurrentlyReadingPage.jsx";
-import Finished from "./screens/Finished.jsx";
-import ToRead from "./screens/ToRead.jsx";
+import MyLists from "./screens/MyLists.jsx";
 import Sidebar from "./navigation/Sidebar.jsx";
 import Navbar from "./navigation/Navbar.jsx";
 import "./index.css";
@@ -22,17 +21,16 @@ function App() {
         <div className="flex-1 md:ml-64 h-screen overflow-y-auto">
           
           {/* Navbar: Sticky on Mobile */}
-          <div className="md:static fixed top-0 left-0 w-full">
+          <div className="fixed top-0 left-0 w-full">
             <Navbar />
           </div>
 
-          <div className="p-6 mt-0 md:mt-0"> {/* Adds space below navbar on mobile */}
+          <div className="p-6 mt-6 md:mt-0"> {/* Adds space below navbar on mobile */}
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/currently-reading" element={<CurrentlyReadingPage />} />
               <Route path="/suggested-books" element={<SuggestedBooksPage />} />
-              <Route path="/to-read" element={<ToRead />} />
-              <Route path="/finished" element={<Finished />} />
+              <Route path="/my-lists" element={<MyLists />} />
             </Routes>
           </div>
         </div>
