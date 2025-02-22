@@ -25,7 +25,7 @@ function App() {
             <Navbar />
           </div>
 
-          <div className="p-6 mt-6 md:mt-0"> {/* Adds space below navbar on mobile */}
+          <div className="p-6 md:p-10 mt-6 md:mt-0"> {/* Adds space below navbar on mobile */}
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/currently-reading" element={<CurrentlyReadingPage />} />

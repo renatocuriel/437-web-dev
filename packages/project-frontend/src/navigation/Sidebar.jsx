@@ -7,24 +7,35 @@ const Sidebar = () => {
   const linkClass = (path) =>
     `block py-2 px-4 rounded ${
       location.pathname === path
-        ? "bg-gray-300 dark:bg-gray-800 font-bold"
+        ? "py-3 px-5 bg-gray-300 dark:bg-gray-800 font-bold"
         : "hover:bg-gray-200 dark:hover:bg-gray-700"
   }`;
 
+  const username = "Diego";
+
+  const pageTitles = {
+    "/": `Hi, ${username}!`,
+    "/currently-reading": "Currently Reading",
+    "/suggested-books": "Suggested Books",
+    "/my-lists": "My Lists",
+  };
+
+  const pageTitle = pageTitles[location.pathname];
+
   return (
     <aside className="hidden md:flex flex-col w-64 h-screen bg-container text-gray-900 dark:text-gray-100 p-4 shadow-custom border-highlight">
-      <h1 className="text-xl font-bold text-gray-900 dark:text-white">Book Tracker</h1>
+      <h1 className="mt-5 text-center text-xl font-bold text-gray-900 dark:text-white">Book Tracker</h1>
 
-      <div className="mt-4">
-        <DarkModeToggle />
-      </div>
-
-      <nav className="mt-4 space-y-2">
+      <nav className="mt-10 space-y-2 flex-1">
         <Link to="/" className={linkClass("/")}>Dashboard</Link>
         <Link to="/currently-reading" className={linkClass("/currently-reading")}>Currently Reading</Link>
         <Link to="/suggested-books" className={linkClass("/suggested-books")}>Suggested Books</Link>
         <Link to="/my-lists" className={linkClass("/my-lists")}>My Lists</Link>
       </nav>
+
+      <div className="flex justify-center">
+        <DarkModeToggle />
+      </div>
     </aside>
   );
 };

@@ -3,55 +3,27 @@ import { useState, useEffect } from "react";
 const CurrentlyReadingPage = () => {
   const [currentPage, setCurrentPage] = useState(150); // Mock data
   const totalPages = 322;
-  const [startTime, setStartTime] = useState(null);
-  const [elapsedTime, setElapsedTime] = useState("0d 0h 0m");
 
-  useEffect(() => {
-    const savedStartTime = localStorage.getItem("readingStartTime");
-    if (savedStartTime) {
-      setStartTime(new Date(savedStartTime));
-    } else {
-      const now = new Date();
-      setStartTime(now);
-      localStorage.setItem("readingStartTime", now);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (startTime) {
-      const timer = setInterval(() => {
-        const now = new Date();
-        const diff = now - new Date(startTime);
-
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-
-        setElapsedTime(`${days}d ${hours}h ${minutes}m`);
-      }, 60000); // Update every minute
-
-      return () => clearInterval(timer);
-    }
-  }, [startTime]);
-
-  const progress = Math.round((currentPage / totalPages) * 100);
+  // const progress = Math.round((currentPage / totalPages) * 100);
+  const progress = ((currentPage / totalPages) * 100).toFixed(2);
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mt-6 md:mt-0">
       <div className ="bg-container p-6 rounded-lg shadow-md">
       <div className="border-highlight p-6 rounded-lg">
         <div className="flex flex-col md:flex-row items-center md:items-start">
           {/* Book Cover */}
           <img
-            src="https://m.media-amazon.com/images/I/71XfsHyh2eL._SL1500_.jpg"
+            src="https://m.media-amazon.com/images/I/51TG5T+dd7L._SY445_SX342_.jpg"
             alt="The Mythical Man-Month"
-            className="w-40 h-60 rounded-lg shadow-md border-highlight"
+            // className="w-40 h-60 rounded-lg shadow-md border-highlight"
+            className="aspect-[2/3] object-cover border-highlight rounded-xl shadow-md"
           />
 
           {/* Book Details */}
           <div className="md:ml-6 mt-4 md:mt-0 w-full">
-            <h1 className="text-2xl font-bold">The Mythical Man-Month</h1>
-            <h2 className="text-lg text-gray-600 dark:text-gray-300">
+            <h1 className="text-center md:text-left text-2xl font-bold">The Mythical Man-Month</h1>
+            <h2 className="text-center md:text-left text-lg text-gray-600 dark:text-gray-300">
               Frederick P. Brooks Jr.
             </h2>
             <p className="mt-2 text-sm">
@@ -81,18 +53,22 @@ const CurrentlyReadingPage = () => {
               <input
                 type="number"
                 value={currentPage}
-                onChange={(e) => setCurrentPage(e.target.value)}
+                onChange={(e) => {
+                  const newValue = e.target.value;
+                  if (newValue >= 0 && newValue <= totalPages) {
+                    setCurrentPage(newValue);
+                  }
+                }}
                 className="w-full p-2 mt-1 border rounded-lg dark:bg-gray-800 border-highlight"
+                placeholder={`0 / ${totalPages}`}
               />
+              {currentPage && (
+                <span className="text-gray-500 dark:text-gray-400">/ {totalPages}</span>
+              )}
             </div>
 
-            {/* Reading Time */}
-            <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-              Reading for: {elapsedTime}
-            </p>
-
             {/* Finish Button */}
-            <button className="btn-primary mt-4">Mark as Finished</button>
+            <button className="btn-primary md:mx-0 mx-auto block mt-4">Mark as Finished</button>
           </div>
         </div>
       </div>

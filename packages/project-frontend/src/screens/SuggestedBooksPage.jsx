@@ -16,10 +16,7 @@ const SuggestedBooksPage = () => {
 
   return (
     <div>
-      <div className="text-center p-6">
-        <h1 className="text-2xl font-bold">Suggested Books</h1>
-      </div>
-      <div className="bg-container mx-auto p-6">
+      <div className="bg-container mt-6 md:mt-0">
         <SuggestedBooks books={allBooks} />
       </div>
     </div>
