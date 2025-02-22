@@ -39,7 +39,7 @@ const AddCurrentlyReading = ({ onUpdate }) => {
 
   return (
     <div className="bg-container border-highlight p-6 rounded-lg">
-      <h2 className="text-xl text-center font-bold mb-4">Update your Current Read</h2>
+      <h2 className="text-xl text-center font-bold mb-4">Update Current Read</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
