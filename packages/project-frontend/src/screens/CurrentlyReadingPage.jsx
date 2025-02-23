@@ -95,7 +95,7 @@ const CurrentlyReadingPage = () => {
           </div>
         </div>
       </div>
-      <div className ="bg-container mt-6 rounded-lg shadow-md">
+      <div className ="bg-container mt-8 rounded-lg shadow-md">
           <AddCurrentlyReading onUpdate={setCurrentlyReading}/>
       </div>
     </div>

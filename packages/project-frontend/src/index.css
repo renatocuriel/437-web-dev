@@ -74,18 +74,3 @@ html.dark {
   background: #BEA68C;
   color: #E7E3DA;
 }
-
-/* Smooth scrolling with momentum */
-/* .scroll-container {
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-} */
-
-/* Stretchy bounce effect on Apple devices */
-/* @supports (-webkit-touch-callout: none) {
-  .scroll-container {
-    overscroll-behavior-y: auto;
-  }
-} */

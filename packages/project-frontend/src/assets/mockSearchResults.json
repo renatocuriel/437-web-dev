@@ -1,0 +1,48 @@
+[
+    {
+        "id": 1,
+        "title": "Loading Book 1...",
+        "author": "Fetching author...",
+        "cover": "https://via.placeholder.com/150?text=Loading...",
+        "description": "Fetching book details...",
+        "genre": "Processing...",
+        "totalPages": 0
+    },
+    {
+        "id": 2,
+        "title": "Loading Book 2...",
+        "author": "Fetching author...",
+        "cover": "https://via.placeholder.com/150?text=Loading...",
+        "description": "Fetching book details...",
+        "genre": "Processing...",
+        "totalPages": 0
+    },
+    {
+        "id": 3,
+        "title": "Loading Book 3...",
+        "author": "Fetching author...",
+        "cover": "https://via.placeholder.com/150?text=Loading...",
+        "description": "Fetching book details...",
+        "genre": "Processing...",
+        "totalPages": 0
+    },
+    {
+        "id": 4,
+        "title": "Loading Book 4...",
+        "author": "Fetching author...",
+        "cover": "https://via.placeholder.com/150?text=Loading...",
+        "description": "Fetching book details...",
+        "genre": "Processing...",
+        "totalPages": 0
+    },
+    {
+        "id": 5,
+        "title": "Loading Book 5...",
+        "author": "Fetching author...",
+        "cover": "https://via.placeholder.com/150?text=Loading...",
+        "description": "Fetching book details...",
+        "genre": "Processing...",
+        "totalPages": 0
+    }
+]
+
