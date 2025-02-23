@@ -3,7 +3,7 @@
       "id": 1,
       "title": "The Pragmatic Programmer",
       "author": "Andrew Hunt & David Thomas",
-      "cover": "https://m.media-amazon.com/images/I/51A7V2cXKzL._SX379_BO1,204,203,200_.jpg",
+      "cover": "https://m.media-amazon.com/images/I/71f1jieYHNL.jpg",
       "description": "A practical guide to programming best practices, software craftsmanship, and continuous learning.",
       "genre": "Software Development",
       "totalPages": 352
@@ -21,7 +21,7 @@
       "id": 3,
       "title": "Refactoring",
       "author": "Martin Fowler",
-      "cover": "https://m.media-amazon.com/images/I/518FqJvR9aL._SX403_BO1,204,203,200_.jpg",
+      "cover": "https://m.media-amazon.com/images/I/71e6ndHEwqL._AC_UF1000,1000_QL80_.jpg",
       "description": "A guide to improving the design of existing code through incremental refactoring techniques.",
       "genre": "Software Design",
       "totalPages": 448
@@ -30,7 +30,7 @@
       "id": 4,
       "title": "Design Patterns",
       "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
-      "cover": "https://m.media-amazon.com/images/I/51sz9YOjISL._SX377_BO1,204,203,200_.jpg",
+      "cover": "https://m.media-amazon.com/images/I/81IGFC6oFmL.jpg",
       "description": "The foundational book on reusable object-oriented software design patterns.",
       "genre": "Software Architecture",
       "totalPages": 416
@@ -39,7 +39,7 @@
       "id": 5,
       "title": "The Mythical Man-Month",
       "author": "Frederick P. Brooks Jr.",
-      "cover": "https://m.media-amazon.com/images/I/71XfsHyh2eL._SL1500_.jpg",
+      "cover": "https://m.media-amazon.com/images/I/51TG5T+dd7L._SY445_SX342_.jpg",
       "description": "A collection of essays on software project management, highlighting the complexities of large-scale development.",
       "genre": "Project Management",
       "totalPages": 322
@@ -48,7 +48,7 @@
       "id": 6,
       "title": "Introduction to the Theory of Computation",
       "author": "Michael Sipser",
-      "cover": "https://m.media-amazon.com/images/I/41MZK6txG3L._SX378_BO1,204,203,200_.jpg",
+      "cover": "https://m.media-amazon.com/images/I/61dPNb6AUJL.jpg",
       "description": "A rigorous but accessible introduction to automata, formal languages, and computational complexity.",
       "genre": "Computer Science",
       "totalPages": 504
@@ -57,7 +57,7 @@
       "id": 7,
       "title": "You Don't Know JS: Scope & Closures",
       "author": "Kyle Simpson",
-      "cover": "https://m.media-amazon.com/images/I/51pDZnDZ99L._SX331_BO1,204,203,200_.jpg",
+      "cover": "https://m.media-amazon.com/images/I/81zWsOMWE4L.jpg",
       "description": "Deep dive into JavaScript's scope and closure mechanisms, essential for understanding modern JS.",
       "genre": "Web Development",
       "totalPages": 98
@@ -66,7 +66,7 @@
       "id": 8,
       "title": "Structure and Interpretation of Computer Programs",
       "author": "Harold Abelson & Gerald Jay Sussman",
-      "cover": "https://m.media-amazon.com/images/I/51l5XUYiUgL._SX403_BO1,204,203,200_.jpg",
+      "cover": "https://m.media-amazon.com/images/I/71BBXQnykuL._AC_UF1000,1000_QL80_.jpg",
       "description": "A classic MIT textbook on fundamental programming concepts using Lisp.",
       "genre": "Computer Science",
       "totalPages": 657
@@ -75,7 +75,7 @@
       "id": 9,
       "title": "Deep Learning",
       "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
-      "cover": "https://m.media-amazon.com/images/I/41P3acss9BL._SX331_BO1,204,203,200_.jpg",
+      "cover": "https://m.media-amazon.com/images/I/A10G+oKN3LL.jpg",
       "description": "A comprehensive introduction to deep learning, covering theory, practice, and applications.",
       "genre": "Machine Learning",
       "totalPages": 800
@@ -84,7 +84,7 @@
       "id": 10,
       "title": "Artificial Intelligence: A Modern Approach",
       "author": "Stuart Russell & Peter Norvig",
-      "cover": "https://m.media-amazon.com/images/I/51CbQB4rcsL._SX379_BO1,204,203,200_.jpg",
+      "cover": "https://m.media-amazon.com/images/I/61nHC3YWZlL._AC_UF1000,1000_QL80_.jpg",
       "description": "The go-to textbook for AI fundamentals, covering search algorithms, machine learning, and reasoning.",
       "genre": "Artificial Intelligence",
       "totalPages": 1136

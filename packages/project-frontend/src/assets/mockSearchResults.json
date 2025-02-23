@@ -34,15 +34,6 @@
         "description": "Fetching book details...",
         "genre": "Processing...",
         "totalPages": 0
-    },
-    {
-        "id": 5,
-        "title": "Loading Book 5...",
-        "author": "Fetching author...",
-        "cover": "https://via.placeholder.com/150?text=Loading...",
-        "description": "Fetching book details...",
-        "genre": "Processing...",
-        "totalPages": 0
     }
 ]
 
