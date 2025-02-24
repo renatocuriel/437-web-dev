@@ -54,7 +54,7 @@ const SuggestedBooksPage = () => {
 
   return (
     <div className="mt-6 md:mt-0">
-      <h1 className="text-2xl font-bold text-center mb-6">Suggested Books</h1>
+      <h1 className="hidden text-2xl font-bold text-center mb-6">Suggested Books</h1>
       
       {/* Search Bar */}
       <div className="bg-container mb-6">

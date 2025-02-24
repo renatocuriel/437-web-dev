@@ -32,7 +32,7 @@ const MyListsPage = () => {
 
   return (
     <div className="mt-6 md:mt-0">
-      <h1 className="text-2xl font-bold text-center mb-6">My Lists</h1>
+      <h1 className="hidden text-2xl font-bold text-center mb-6">My Lists</h1>
 
       {/* Create New List */}
       <div className="mb-6 bg-container"> 

@@ -6,7 +6,7 @@ import SuggestedBooks from "../components/SuggestedBooks";
 const Dashboard = () => {
   return (
     <div className="mt-6 md:mt-0">
-      <h1 className="text-2xl font-bold text-center mb-6">Dashboard</h1>
+      <h1 className="hidden text-2xl font-bold text-center mb-6">Dashboard</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
         {/* Currently Reading - Takes Left Half on Web */}
