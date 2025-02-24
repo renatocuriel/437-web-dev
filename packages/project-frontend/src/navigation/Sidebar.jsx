@@ -31,6 +31,7 @@ const Sidebar = () => {
         <Link to="/currently-reading" className={linkClass("/currently-reading")}>Currently Reading</Link>
         <Link to="/suggested-books" className={linkClass("/suggested-books")}>Suggested Books</Link>
         <Link to="/my-lists" className={linkClass("/my-lists")}>My Lists</Link>
+        <Link to="/profile" className={linkClass("/profile")}>Profile</Link>
       </nav>
 
       <div className="flex justify-center">

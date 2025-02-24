@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./screens/Dashboard.jsx";
 import SuggestedBooksPage from "./screens/SuggestedBooksPage.jsx";
 import CurrentlyReadingPage from "./screens/CurrentlyReadingPage.jsx";
-import MyLists from "./screens/MyLists.jsx";
+import MyListsPage from "./screens/MyListsPage.jsx";
+import ProfilePage from "./screens/ProfilePage.jsx";
 import Sidebar from "./navigation/Sidebar.jsx";
 import Navbar from "./navigation/Navbar.jsx";
 import "./index.css";
@@ -30,7 +31,8 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/currently-reading" element={<CurrentlyReadingPage />} />
               <Route path="/suggested-books" element={<SuggestedBooksPage />} />
-              <Route path="/my-lists" element={<MyLists />} />
+              <Route path="/my-lists" element={<MyListsPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
             </Routes>
           </div>
         </div>

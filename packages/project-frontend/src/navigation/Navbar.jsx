@@ -62,6 +62,7 @@ const Navbar = () => {
         <Link to="/currently-reading" className={linkClass("/currently-reading")} onClick={() => setMenuOpen(false)}>Currently Reading</Link>
         <Link to="/suggested-books" className={linkClass("/suggested-books")} onClick={() => setMenuOpen(false)}>Suggested Books</Link>
         <Link to="/my-lists" className={linkClass("/my-lists")} onClick={() => setMenuOpen(false)}>My Lists</Link>
+        <Link to="/profile" className={linkClass("/profile")} onClick={() => setMenuOpen(false)}>Profile</Link>
         </div>
       )}
     </nav>

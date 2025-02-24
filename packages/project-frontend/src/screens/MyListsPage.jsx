@@ -1,7 +1,7 @@
 import { useState } from "react";
 import booksMockData from "../assets/mockBooks.json";
 
-const MyLists = () => {
+const MyListsPage = () => {
   const [lists, setLists] = useState([
     { id: 1, title: "Favorites", description: "Books I love", books: [booksMockData[0], booksMockData[1]] },
     { id: 2, title: "To Read", description: "Books I want to read", books: [booksMockData[2], booksMockData[3]] }
@@ -110,4 +110,4 @@ const MyLists = () => {
   );
 };
 
-export default MyLists;
+export default MyListsPage;

@@ -31,6 +31,8 @@ const CurrentlyReadingPage = () => {
 
   return (
     <div className="container mt-6 md:mt-0">
+      <h1 className="text-2xl font-bold text-center mb-6">Currently Reading</h1>
+
       <div className ="bg-container p-6 rounded-lg shadow-md">
         <div className="border-highlight p-6 rounded-lg">
           <div className="flex flex-col md:flex-row items-center md:items-start">
