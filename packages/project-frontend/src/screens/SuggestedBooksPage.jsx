@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef  } from "react";
 import booksMockData from "../assets/mockBooks.json"; // Mock book data for now
 import mockSearchResults from "../assets/mockSearchResults.json"; // Mock search results for now
 
@@ -7,7 +7,35 @@ const SuggestedBooksPage = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [currentlyReading, setCurrentlyReading] = useState(null);
+  const [carouselDropdown, setCarouselDropdown] = useState(null);
   
+  // Refs to detect clicks outside dropdowns
+  const dropdownRef = useRef(null);
+  const carouselDropdownRef = useRef(null);
+
+  // Click outside event listener
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        setDropdownOpen(null);
+      }
+
+      if (
+        carouselDropdownRef.current &&
+        !carouselDropdownRef.current.contains(event.target)
+      ) {
+        setCarouselDropdown(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   // Simulated search function
   const handleSearch = () => {
     setIsLoading(true);
@@ -46,10 +74,48 @@ const SuggestedBooksPage = () => {
       <h2 className="text-xl font-semibold mb-4">Recommended for You</h2>
       <div className="bg-container mb-6">
         <div className="flex overflow-x-auto space-x-4 justify-between p-4 border-highlight rounded-lg">
-          {booksMockData.slice(0, 9).map((book, index) => (
-            <div key={index} className="min-w-[150px] items-center flex flex-col">
-              <img src={book.cover} alt={book.title} className="w-36 h-52 object-cover rounded-sm shadow-md border-highlight hover:scale-105 transition-transform" />
-              <p className="text-sm mt-2 text-center">{book.title}</p>
+          {booksMockData.slice(0, 5).map((book, index) => (
+            <div key={index} className="relative min-w-[150px] items-center flex flex-col justify-between">
+              <img
+              src={book.cover} 
+              alt={book.title}
+              className="w-36 h-52 object-cover rounded-sm shadow-md border-highlight hover:scale-105 transition-transform" 
+              onClick={() => setCarouselDropdown(carouselDropdown === index ? null : index)}
+              />
+
+              <p className="text-md mt-2 text-center">{book.title}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-300 mt-3 text-center">{book.genre}</p>
+
+              {carouselDropdown === index && (
+                <div ref={carouselDropdownRef} className="absolute bg-container border-highlight rounded-lg mb-2 w-40 divide-y divide-gray-600 dark:divide-gray-700">
+                  {/* Set as Currently Reading */}
+                  <button 
+                    className="block w-full text-center p-2 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-t-lg cursor-pointer font-semibold"
+                    onClick={() => {
+                      alert(`Set "${book.title}" as Currently Reading`);
+                      setCarouselDropdown(null);
+                    }}
+                  >
+                  Set as Currently Reading
+                  </button>
+                  
+                  {/* User Lists */}
+                  <div className="border-t border-gray-400 dark:border-gray-700">
+                    {userLists.map((list, listIndex) => (
+                      <button 
+                        key={listIndex}
+                        className="block w-full text-center p-2 hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer"
+                        onClick={() => {
+                          alert(`Added "${book.title}" to "${list}"`);
+                          setCarouselDropdown(null);
+                        }}
+                      >
+                        {list}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -88,7 +154,7 @@ const SuggestedBooksPage = () => {
                   </button>
 
                   {dropdownOpen === index && (
-                    <div className="absolute bottom-full left-0 right-0 bg-container border border-highlight rounded-lg shadow-lg mb-2 divide-y divide-gray-600 dark:divide-gray-700">
+                    <div ref={dropdownRef} className="absolute bottom-full left-0 right-0 bg-container border border-highlight rounded-lg shadow-lg mb-2 divide-y divide-gray-600 dark:divide-gray-700">
                       {userLists.map((list, listIndex) => (
                         <button 
                           key={listIndex}
@@ -103,6 +169,16 @@ const SuggestedBooksPage = () => {
                       ))}
                     </div>
                   )}
+
+                  <button 
+                    className="btn-primary w-full mt-3"
+                    onClick={() => {
+                      setCurrentlyReading(book);
+                      alert(`Started reading "${book.title}"`);
+                    }}
+                  >
+                    Start Reading
+                  </button>
                 </div>
               </div>
             </div>
