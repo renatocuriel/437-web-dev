@@ -79,7 +79,7 @@ const SuggestedBooksPage = () => {
               <img
               src={book.cover} 
               alt={book.title}
-              className="w-36 h-52 object-cover rounded-sm shadow-md border-highlight hover:scale-105 transition-transform" 
+              className="w-36 h-52 rounded-sm shadow-md border-highlight hover:scale-105 transition-transform" 
               onClick={() => setCarouselDropdown(carouselDropdown === index ? null : index)}
               />
 

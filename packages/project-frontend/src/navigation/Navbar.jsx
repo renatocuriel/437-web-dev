@@ -46,7 +46,7 @@ const Navbar = () => {
 
   return (
     // <nav className="fixed w-full top-0 left-0 flex items-center justify-between bg-container text-gray-900 dark:text-gray-100 md:hidden border-highlight">
-    <nav className="fixed top-0 left-0 w-full flex items-center justify-between bg-container text-gray-900 dark:text-gray-100 py-1 px-4 md:hidden border-highlight shadow-md z-20 h-14">
+    <nav className="fixed top-0 left-0 w-full flex items-center justify-between bg-container text-gray-900 dark:text-gray-100 py-1 px-4 md:hidden border-highlight shadow-md h-14">
     {/* <nav className="fixed flex w-full bottom-0 items-center justify-between bg-container text-gray-900 dark:text-gray-100 p-4 md:hidden border-highlight"> */}
       <button ref={buttonRef} onClick={() => setMenuOpen(!menuOpen)} className="text-2xl text-gray-900 dark:text-white">
         ☰

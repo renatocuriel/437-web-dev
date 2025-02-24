@@ -21,7 +21,7 @@ function App() {
         <div className="flex-1 md:ml-64 h-screen overflow-y-auto">
           
           {/* Navbar: Sticky on Mobile */}
-          <div className="fixed top-0 left-0 w-full">
+          <div className="fixed top-0 left-0 w-full z-20">
             <Navbar />
           </div>
 
