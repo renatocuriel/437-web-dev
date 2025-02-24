@@ -11,7 +11,8 @@ import "./index.css";
 function App() {
   return (
     <Router>
-      <div className="flex bg-background text-gray-900 dark:text-gray-100">
+      <div className="flex bg-background text-gray-900 dark:text-gray-100 h-[100dvh] overflow-hidden">
+      {/* <div className="flex bg-background text-gray-900 dark:text-gray-100"> */}
         
         {/* Sidebar: Fixed Position */}
         <div className="w-64 fixed left-0 top-0 h-screen bg-sidebar z-50 hidden md:block">
@@ -19,7 +20,8 @@ function App() {
         </div>
 
         {/* Main Content: Scrollable */}
-        <div className="flex-1 md:ml-64 h-screen overflow-y-auto">
+        <div className="flex-1 md:ml-64 h-full overflow-y-auto">
+        {/* <div className="flex-1 md:ml-64 h-screen overflow-y-auto"> */}
           
           {/* Navbar: Sticky on Mobile */}
           <div className="fixed top-0 left-0 w-full z-20">
