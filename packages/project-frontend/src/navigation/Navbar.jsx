@@ -20,6 +20,7 @@ const Navbar = () => {
     "/currently-reading": "Currently Reading",
     "/suggested-books": "Suggested Books",
     "/my-lists": "My Lists",
+    "/profile": "Profile",
   };
 
   const pageTitle = pageTitles[location.pathname];
