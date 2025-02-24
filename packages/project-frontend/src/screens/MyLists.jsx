@@ -80,7 +80,7 @@ const MyLists = () => {
             {list.books.length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {list.books.map((book) => (
-                  <div key={book.id} className="bg-container p-3 rounded-lg shadow-md border-highlight h-full flex flex-col">
+                  <div key={book.id} className="bg-container p-3 rounded-lg shadow-md border-highlight h-full flex flex-col hover:scale-105 transition-transform">
                     <img src={book.cover} alt={book.title} className="w-full aspect-[2/3] rounded-lg mb-2" />
                     <div className="flex flex-col flex-grow justify-between">
                       <h3 className="text-lg text-center font-semibold">{book.title}</h3>

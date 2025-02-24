@@ -50,7 +50,7 @@ const SuggestedBooksPage = () => {
     }, 2000); // Simulate loading time
   };
 
-  const userLists = ["Favorites", "Sci-Fi", "Maybe Later"];
+  const userLists = ["Favorites", "To Read"];
 
   return (
     <div className="mt-6 md:mt-0">
