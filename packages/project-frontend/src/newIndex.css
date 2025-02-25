@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Smooth transitions */
+html {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* --- LIGHT MODE --- */
+html {
+  background-color: #F5F3F1; /* Soft warm white */
+  color: #2D2D2D; /* Neutral deep gray */
+}
+
+/* --- DARK MODE --- */
+html.dark {
+  background-color: #1E2421; /* Deep green-black */
+  color: #EDEBE6; /* Soft off-white */
+}
+
+/* --- CONTAINERS & CARDS --- */
+.bg-container {
+  background-color: #FFFFFF; /* Pure white for a clean look */
+  border-radius: 12px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  border: 1px solid #D4C7B0; /* Warm beige-gold border */
+}
+
+.dark .bg-container {
+  background-color: #2D332F; /* Deep green-gray */
+  border: 1px solid #87785E; /* Muted bronze border */
+  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.08);
+}
+
+/* --- BUTTONS --- */
+.btn-primary {
+  background-color: #4C6650; /* Modern muted green */
+  color: #F8F6F2; /* Soft off-white */
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.1s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #627D69; /* Slightly lighter green */
+  transform: scale(1.03);
+}
+
+.dark .btn-primary {
+  background-color: #C2B49A; /* Warm beige */
+  color: #1E2421; /* Deep contrast */
+}
+
+.dark .btn-primary:hover {
+  background-color: #A8977D;
+  transform: scale(1.03);
+}
+
+/* --- OUTLINES & BORDERS --- */
+.border-highlight {
+  border: 2px solid #E0B97D; /* Warm gold */
+}
+
+.dark .border-highlight {
+  border: 2px solid #E0B97D;
+}
+
+/* --- TEXT SELECTION --- */
+::selection {
+  background: #E0B97D; /* Soft golden tan */
+  color: #2D2D2D;
+}
+
+.dark ::selection {
+  background: #E0B97D;
+  color: #EDEBE6;
+}

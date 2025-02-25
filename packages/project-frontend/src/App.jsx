@@ -6,7 +6,8 @@ import MyListsPage from "./screens/MyListsPage.jsx";
 import ProfilePage from "./screens/ProfilePage.jsx";
 import Sidebar from "./navigation/Sidebar.jsx";
 import Navbar from "./navigation/Navbar.jsx";
-import "./index.css";
+import "./newIndex.css";
+// import "./index.css";
 
 function App() {
   return (
