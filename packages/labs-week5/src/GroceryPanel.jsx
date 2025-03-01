@@ -1,94 +1,21 @@
 import React from "react";
 import "./GroceryPanel.css";
 import Spinner from "./Spinner";
-import { groceryFetcher } from "./groceryFetcher";
-
-const MDN_URL = "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json";
-
-/**
- * Creates and returns a new promise that resolves after a specified number of milliseconds.
- *
- * @param {number} ms the number of milliseconds to delay
- * @returns {Promise<undefined>} a promise that resolves with the value of `undefined` after the specified delay
- */
-function delayMs(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+import { useGroceryFetch } from "./hooks/useGroceryFetch";
 
 function GroceryPanel(props) {
-    const [groceryData, setGroceryData] = React.useState([]);
-    const [isLoading, setIsLoading] = React.useState(false);
-    const [error, setError] = React.useState(null);
     const [selectedSource, setSelectedSource] = React.useState("MDN"); // Track dropdown selection
 
-    async function fetchData(url) {
-        try {
-            setIsLoading(true);
-            setError(null);
-
-            const data = await groceryFetcher.fetch(url); // Fetch grocery data
-            setGroceryData(data);
-        } catch (error) {
-            setError("Error fetching data: " + error.message);
-        } finally {
-            setIsLoading(false);
-        }
-    }
-
-    // function handleDropdownChange(e) {
-    //     const selectedUrl = e.target.value;
-        
-    //     // Clear grocery data when changing sources
-    //     setGroceryData([]);
-    
-    //     if (selectedUrl) {
-    //         fetchData(selectedUrl);
-    //     }
-    // }
+    const { groceryData, isLoading, error } = useGroceryFetch(selectedSource);
 
     function handleDropdownChange(e) {
-        setSelectedSource(e.target.value); // Update state, useEffect will handle fetching
+        setSelectedSource(e.target.value);
     }
-    
 
     function handleAddTodoClicked(item) {
         const todoName = `Buy ${item.name} (${item.price.toFixed(2)})`;
-        // TODO complete this
         props.onAddTask(todoName);
     }
-
-
-    React.useEffect(() => {
-        let isStale = false; // Track if request is outdated
-    
-        async function fetchData(source) {
-            try {
-                setIsLoading(true);
-                setError(null);
-    
-                const data = await groceryFetcher.fetch(source);
-    
-                if (!isStale) {
-                    setGroceryData(data); // Update only if request is valid
-                }
-            } catch (error) {
-                if (!isStale) {
-                    setError("Error fetching data: " + error.message);
-                }
-            } finally {
-                if (!isStale) {
-                    setIsLoading(false);
-                }
-            }
-        }
-    
-        fetchData(selectedSource); // Fetch data for the current dropdown value
-    
-        return () => {
-            isStale = true; // Mark request as outdated when component re-renders
-        };
-    }, [selectedSource]); // Run useEffect when selectedSource changes
-    
     
     return (
         <div>
