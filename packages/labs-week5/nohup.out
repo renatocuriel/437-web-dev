@@ -1,0 +1,11 @@
+npm ERR! Lifecycle script `start` failed with error: 
+npm ERR! Error: Missing script: "start"
+
+Did you mean one of these?
+    npm star # Mark your favorite packages
+    npm stars # View packages marked as favorites
+
+To see a list of scripts, run:
+  npm run 
+npm ERR!   in workspace: labs-week5@0.0.0 
+npm ERR!   at location: /home/dicuriel/437-web-dev/packages/labs-week5 
