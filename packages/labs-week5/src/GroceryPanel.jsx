@@ -1,6 +1,7 @@
 import React from "react";
 import "./GroceryPanel.css";
 import Spinner from "./Spinner";
+import { groceryFetcher } from "./groceryFetcher";
 
 const MDN_URL = "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json";
 
@@ -18,21 +19,14 @@ function GroceryPanel(props) {
     const [groceryData, setGroceryData] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
+    const [selectedSource, setSelectedSource] = React.useState("MDN"); // Track dropdown selection
 
     async function fetchData(url) {
         try {
             setIsLoading(true);
             setError(null);
 
-            await delayMs(2000); // Simulate a delay
-
-            const response = await fetch(url);
-            if (!response.ok) {
-                setError(`HTTP error! status: ${response.status}`);
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
+            const data = await groceryFetcher.fetch(url); // Fetch grocery data
             setGroceryData(data);
         } catch (error) {
             setError("Error fetching data: " + error.message);
@@ -41,15 +35,19 @@ function GroceryPanel(props) {
         }
     }
 
-    function handleDropdownChange(e) {
-        const selectedUrl = e.target.value;
+    // function handleDropdownChange(e) {
+    //     const selectedUrl = e.target.value;
         
-        // Clear grocery data when changing sources
-        setGroceryData([]);
+    //     // Clear grocery data when changing sources
+    //     setGroceryData([]);
     
-        if (selectedUrl) {
-            fetchData(selectedUrl);
-        }
+    //     if (selectedUrl) {
+    //         fetchData(selectedUrl);
+    //     }
+    // }
+
+    function handleDropdownChange(e) {
+        setSelectedSource(e.target.value); // Update state, useEffect will handle fetching
     }
     
 
@@ -59,6 +57,39 @@ function GroceryPanel(props) {
         props.onAddTask(todoName);
     }
 
+
+    React.useEffect(() => {
+        let isStale = false; // Track if request is outdated
+    
+        async function fetchData(source) {
+            try {
+                setIsLoading(true);
+                setError(null);
+    
+                const data = await groceryFetcher.fetch(source);
+    
+                if (!isStale) {
+                    setGroceryData(data); // Update only if request is valid
+                }
+            } catch (error) {
+                if (!isStale) {
+                    setError("Error fetching data: " + error.message);
+                }
+            } finally {
+                if (!isStale) {
+                    setIsLoading(false);
+                }
+            }
+        }
+    
+        fetchData(selectedSource); // Fetch data for the current dropdown value
+    
+        return () => {
+            isStale = true; // Mark request as outdated when component re-renders
+        };
+    }, [selectedSource]); // Run useEffect when selectedSource changes
+    
+    
     return (
         <div>
             <h1 className="text-xl font-bold">Groceries prices today</h1>
@@ -67,11 +98,12 @@ function GroceryPanel(props) {
                 <select 
                     className="border border-gray-300 p-1 rounded-sm disabled:opacity-50"
                     onChange={handleDropdownChange}
-                    disabled={isLoading}
+                    //disabled={isLoading}
                 >
-                    <option value="">(None selected)</option>
-                    <option value={MDN_URL}>MDN</option>
-                    <option value="invalid">Who knows?</option>
+                    <option value="MDN">MDN</option>
+                    <option value="Liquor store">Liquor store</option>
+                    <option value="Butcher">Butcher</option>
+                    <option value="whoknows">Who knows?</option>
                 </select>
 
                 {isLoading && <Spinner />}
