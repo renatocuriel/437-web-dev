@@ -29,26 +29,45 @@ const IMAGES = [
 ];
 
 /**
- * Fetches images on component mount.  Returns an object with two properties: isLoading and fetchedImages, which will be
- * an array of ImageData
+ * Fetches images from the backend.
  *
- * @param imageId {string} the image ID to fetch, or all of them if empty string
- * @param delay {number} the number of milliseconds fetching will take
+ * @param {string} imageId - The image ID to fetch, or all images if an empty string.
  * @returns {{isLoading: boolean, fetchedImages: ImageData[]}} fetch state and data
  */
-export function useImageFetching(imageId, delay=1000) {
+export function useImageFetching(imageId = "") {
     const [isLoading, setIsLoading] = useState(true);
     const [fetchedImages, setFetchedImages] = useState([]);
+
     useEffect(() => {
-        setTimeout(() => {
-            if (imageId === "") {
-                setFetchedImages(IMAGES);
-            } else {
-                setFetchedImages(IMAGES.filter((image) => image.id === imageId));
+        async function fetchImages() {
+            setIsLoading(true);
+            try {
+                const endpoint = imageId ? `/api/images?createdBy=${imageId}` : "/api/images";
+                const response = await fetch(endpoint);
+
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch images: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+
+                // Ensure "_id" is mapped to "id" for React compatibility
+                const formattedImages = data.map(img => ({
+                    ...img,
+                    id: img._id // Convert "_id" from MongoDB to "id" for frontend use
+                }));
+
+                setFetchedImages(formattedImages);
+            } catch (error) {
+                console.error("Error fetching images:", error);
+                setFetchedImages([]); // Fallback to empty array on error
+            } finally {
+                setIsLoading(false);
             }
-            setIsLoading(false);
-        }, delay);
-    }, [imageId]);
+        }
+
+        fetchImages();
+    }, [imageId]); // Runs when `imageId` changes
 
     return { isLoading, fetchedImages };
 }
