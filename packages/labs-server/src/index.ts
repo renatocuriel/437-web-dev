@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { MongoClient } from "mongodb";
-import { ImageProvider } from "./ImageProvider";
+import { registerImageRoutes } from "./routes/images";
 
 const uri = "mongodb+srv://dicuriel:csc437@cluster0.a1aq2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
@@ -24,7 +24,7 @@ async function setUpServer() {
     
     
     const app = express();
-
+    app.use(express.json());
     app.use(express.static(staticDir));
 
     app.get("/hello", (req: Request, res: Response) => {
@@ -32,17 +32,19 @@ async function setUpServer() {
         res.send("Hello, World");
     });
 
-    app.get("/api/images", async (req: Request, res: Response) => {
-        try {
-            const imageProvider = new ImageProvider(mongoClient);
-            const images = await imageProvider.getAllImages();
-            res.json(images);
-        } 
-        catch (e) {
-            console.error(e);
-            res.status(500).send("An error occurred while fetching images.");
-        }
-    });
+    registerImageRoutes(app, mongoClient);
+
+    // app.get("/api/images", async (req: Request, res: Response) => {
+    //     try {
+    //         const imageProvider = new ImageProvider(mongoClient);
+    //         const images = await imageProvider.getAllImages();
+    //         res.json(images);
+    //     } 
+    //     catch (e) {
+    //         console.error(e);
+    //         res.status(500).send("An error occurred while fetching images.");
+    //     }
+    // });
     
     app.get("*", (req: Request, res: Response) => {
         console.log(`No static file found for ${req.url}, serving index.html`);
