@@ -1,0 +1,81 @@
+### This is a comment
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{ "username": "newuser", "password": "password" }
+
+### ✅ Register a new user (Success)
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{ "username": "testuser1", "password": "password" }
+
+### ❌ Register the same user again (Should fail)
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{ "username": "testuser1", "password": "password" }
+
+### ❌ Register with missing fields (Should fail)
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{ "username": "testuser2" }
+
+### ✅ Login with correct credentials (Success)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{ "username": "testuser1", "password": "password" }
+
+### ❌ Login with incorrect password (Should fail)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{ "username": "testuser1", "password": "wrongpassword" }
+
+### ❌ Login with non-existent user (Should fail)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{ "username": "doesnotexist", "password": "password" }
+
+### ❌ Login with missing fields (Should fail)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{ "username": "testuser1" }
+### ✅ Login and Get a Token (Success)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{ "username": "testuser1", "password": "password" }
+
+### ❌ Login with incorrect password (Should fail)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{ "username": "testuser1", "password": "wrongpassword" }
+
+### ❌ Login with non-existent user (Should fail)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{ "username": "doesnotexist", "password": "password" }
+
+### ✅ Login and Get a Token
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{ "username": "testuser1", "password": "password" }
+
+### ❌ Attempt to Access API Without a Token (Should return 401 Unauthorized)
+GET http://localhost:3000/api/images
+
+### ✅ Access API With a Token (Replace <TOKEN> with actual token)
+GET http://localhost:3000/api/images
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyMSIsImlhdCI6MTc0MTY2NTczMSwiZXhwIjoxNzQxNzUyMTMxfQ.t_U8rQwZ8FBLauwCLU0AgTJH4EJhCPEX917wS1MP8Aw
+
+### ❌ Access API With an Invalid Token (Should return 403 Forbidden)
+GET http://localhost:3000/api/images
+Authorization: Bearer invalidtoken123

@@ -13,18 +13,11 @@ export function registerImageRoutes(app: express.Application, mongoClient: Mongo
             const imageProvider = new ImageProvider(mongoClient);
             const images = await imageProvider.getAllImages(userId);
             res.json(images);
-        } 
-        catch (e) {
+        } catch (e) {
             console.error(e);
             res.status(500).send("An error occurred while fetching images.");
         }
     });
-
-    // PATCH: Basic response test
-    // app.patch("/api/images/:id", async (req: Request, res: Response): Promise<void> => {
-    //     console.log(`Received PATCH request for image ID: ${req.params.id}`);
-    //     res.send("OK");
-    // });
 
     // PATCH: Update image name
     app.patch("/api/images/:id", async (req: Request, res: Response): Promise<void> => {
