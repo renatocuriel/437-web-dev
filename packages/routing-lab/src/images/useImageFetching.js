@@ -1,49 +1,43 @@
 import { useEffect, useState } from "react";
 
-const IMAGES = [
-    {
-        id: "0",
-        src: "https://upload.wikimedia.org/wikipedia/commons/3/33/Blue_merle_koolie_short_coat_heading_sheep.jpg",
-        name: "Blue merle herding sheep"
-    },
-    {
-        id: "1",
-        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Huskiesatrest.jpg/2560px-Huskiesatrest.jpg",
-        name: "Huskies"
-    },
-    {
-        id: "2",
-        src: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Taka_Shiba.jpg",
-        name: "Shiba"
-    },
-    {
-        id: "3",
-        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Felis_catus-cat_on_snow.jpg/2560px-Felis_catus-cat_on_snow.jpg",
-        name: "Tabby cat"
-    },
-    {
-        id: "4",
-        src: "https://upload.wikimedia.org/wikipedia/commons/8/84/Male_and_female_chicken_sitting_together.jpg",
-        name: "Chickens"
-    }
-];
-
 /**
- * Fetches images from the backend.
+ * Fetches images from the backend with authentication.
  *
  * @param {string} imageId - The image ID to fetch, or all images if an empty string.
+ * @param {string} authToken - The authentication token for the request.
  * @returns {{isLoading: boolean, fetchedImages: ImageData[]}} fetch state and data
  */
-export function useImageFetching(imageId = "") {
+export function useImageFetching(imageId = "", authToken) {
     const [isLoading, setIsLoading] = useState(true);
     const [fetchedImages, setFetchedImages] = useState([]);
 
     useEffect(() => {
+        console.log("Auth Token:", authToken);
+    }, [authToken]);
+
+    useEffect(() => {
+        if (!authToken) {
+            setFetchedImages([]); // Clear images if not logged in
+            setIsLoading(false);
+            return;
+        }
+
         async function fetchImages() {
             setIsLoading(true);
             try {
                 const endpoint = imageId ? `/api/images?createdBy=${imageId}` : "/api/images";
-                const response = await fetch(endpoint);
+                console.log(`Fetching images from: ${endpoint}`);
+                console.log(`Using auth token: ${authToken}`); // Log token
+
+                const response = await fetch(endpoint, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${authToken}`, // Send auth token
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                console.log(`Response status: ${response.status}`);
 
                 if (!response.ok) {
                     throw new Error(`Failed to fetch images: ${response.statusText}`);
@@ -67,7 +61,7 @@ export function useImageFetching(imageId = "") {
         }
 
         fetchImages();
-    }, [imageId]); // Runs when `imageId` changes
+    }, [imageId, authToken]); // ✅ Runs when `imageId` or `authToken` changes
 
     return { isLoading, fetchedImages };
 }

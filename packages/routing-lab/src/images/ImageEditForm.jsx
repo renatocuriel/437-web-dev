@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function ImageEditForm({ onImageUpdated }) {
+export function ImageEditForm({ onImageUpdated, authToken }) {
     const [imageId, setImageId] = useState("");
     const [imageName, setImageName] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -18,6 +18,7 @@ export function ImageEditForm({ onImageUpdated }) {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${authToken}`,
                 },
                 body: JSON.stringify({ name: imageName }),
             });

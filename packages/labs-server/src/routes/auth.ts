@@ -16,6 +16,8 @@ export function verifyAuthToken(
     res: Response,
     next: NextFunction
 ): void {
+    console.log("Received request to protected route:", req.path);
+    console.log("Headers received:", req.headers);
     const authHeader = req.get("Authorization");
     const token = authHeader && authHeader.split(" ")[1]; // Extract the token after "Bearer "
 
@@ -76,8 +78,10 @@ export function registerAuthRoutes(app: express.Application, mongoClient: MongoC
                     });
                 }
 
-                // Case 3: Registration successful
-                res.status(201).send(); // 201 Created (No response body needed)
+                // Case 3: Registration successful → Generate JWT Token
+                const token = await generateAuthToken(username);
+                res.status(201).send({ token }); // Send token in response
+
             } catch (error) {
                 console.error("Error during registration:", error);
                 res.status(500).send({ error: "Internal server error" });

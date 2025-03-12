@@ -1,4 +1,4 @@
-export function AccountSettings({ userName, setUserName }) {
+export function AccountSettings({ userName, setUserName, onLogout }) {
     return (
         <>
             <h2>Account settings</h2>
@@ -11,6 +11,7 @@ export function AccountSettings({ userName, setUserName }) {
                 />
             </label>
             <p><i>Changes are auto-saved.</i></p>
+            <button onClick={onLogout}>Log Out</button>
         </>
     );
 }

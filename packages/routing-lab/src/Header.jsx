@@ -6,14 +6,16 @@ export function Header() {
         <header>
             <h1>My cool site</h1>
             <div>
-                <label>
-                    Some switch (dark mode?) <input type="checkbox" />
+                <label htmlFor="dark-mode-switch">
+                    Some switch (dark mode?) <input type="checkbox" id="dark-mode-switch" />
                 </label>
                 <nav>
                     {/* Replace <a> with <Link> */}
                     <Link to="/">Home</Link>
                     <Link to="/images">Image Gallery</Link>
                     <Link to="/account">Account</Link>
+                    {/* <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link> */}
                 </nav>
             </div>
         </header>
