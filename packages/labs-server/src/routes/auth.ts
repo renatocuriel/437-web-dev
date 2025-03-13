@@ -31,6 +31,7 @@ export function verifyAuthToken(
             res.status(403).json({ error: "Forbidden", message: "Invalid token" });
             return;
         }
+        res.locals.token = decoded;
         next(); // Token valid, proceed to the next middleware or route handler
     });
 }

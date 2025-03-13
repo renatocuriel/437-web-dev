@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { MongoClient } from "mongodb";
 import { ImageProvider } from "../ImageProvider";
+import { imageMiddlewareFactory, handleImageFileErrors } from "../imageUploadMiddleware";
 
 export function registerImageRoutes(app: express.Application, mongoClient: MongoClient) {
     app.get("/api/images", async (req: Request, res: Response) => {
@@ -52,5 +53,64 @@ export function registerImageRoutes(app: express.Application, mongoClient: Mongo
             res.status(500).send("An error occurred while updating the image.");
         }
     });
+
+    // app.post(
+    //     "/api/images",
+    //     imageMiddlewareFactory.single("image"), // Match input field name
+    //     handleImageFileErrors,
+    //     async (req: Request, res: Response) => {
+    //         // Final handler function after the above two middleware functions finish running
+    //         console.log("Uploaded file:", req.file);
+    //         console.log("Request body:", req.body);
+    //         res.status(500).send("Not implemented");
+    //     }
+    // )
+
+    app.post(
+        "/api/images",
+        imageMiddlewareFactory.single("image"), // ✅ Processes image upload
+        handleImageFileErrors, // ✅ Catches errors
+        async (req: Request, res: Response) => {
+            try {
+                console.log("Uploaded file:", req.file);
+                console.log("Decoded Token (for author):", res.locals.token); // ✅ Debugging
+    
+                if (!req.file || !req.body.name) {
+                    res.status(400).json({
+                        error: "Bad Request",
+                        message: "Missing image file or title",
+                    });
+                    return;
+                }
+    
+                // ✅ Extract the username from res.locals.token
+                const author = res.locals.token?.username ?? "unknown_user"; // Default if not logged in
+                console.log("Author determined from token:", author);
+    
+                // ✅ Generate image metadata
+                const filename = req.file.filename;
+                const imageTitle = req.body.name;
+                const imageSrc = `/uploads/${filename}`;
+    
+                const imageDocument = {
+                    _id: filename,
+                    src: imageSrc,
+                    name: imageTitle,
+                    author: author,  // ✅ Ensure username is stored
+                    likes: 0,
+                };
+    
+                // ✅ Store in database
+                const imageProvider = new ImageProvider(mongoClient);
+                await imageProvider.createImage(imageDocument);
+    
+                console.log("Image successfully saved:", imageDocument);
+                res.status(201).json(imageDocument);
+            } catch (error) {
+                console.error("Error saving image:", error);
+                res.status(500).send({ error: "Internal server error" });
+            }
+        }
+    );
     
 }

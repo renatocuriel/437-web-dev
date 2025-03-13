@@ -58,7 +58,7 @@ function App() {
                 <Route path="/" element={<MainLayout />}>
                     <Route index element={<ProtectedRoute authToken={authToken}><Homepage userName={userName} authToken={authToken} /></ProtectedRoute>} />
                     <Route path="account" element={<ProtectedRoute authToken={authToken}><AccountSettings userName={userName} setUserName={setUserName} onLogout={handleLogout}/></ProtectedRoute>} />
-                    <Route path="images" element={<ProtectedRoute authToken={authToken}><ImageGallery isLoading={isLoading} fetchedImages={fetchedImages} /></ProtectedRoute>} />
+                    <Route path="images" element={<ProtectedRoute authToken={authToken}><ImageGallery isLoading={isLoading} fetchedImages={fetchedImages} authToken={authToken} /></ProtectedRoute>} />
                     <Route path="images/:imageId" element={<ProtectedRoute authToken={authToken}><ImageDetails fetchedImages={fetchedImages} /></ProtectedRoute>} />
                     <Route path="login" element={<LoginPage setAuthToken={handleSetAuthToken} />} />
                     <Route path="register" element={<RegisterPage setAuthToken={handleSetAuthToken} />} />

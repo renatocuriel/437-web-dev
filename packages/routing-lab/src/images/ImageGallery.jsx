@@ -1,7 +1,8 @@
 import { Link } from "react-router"; // Import Link from react-router
+import { ImageUploadForm } from "./ImageUploadForm"; // Import the upload form
 import "./ImageGallery.css";
 
-export function ImageGallery({ isLoading, fetchedImages }) {
+export function ImageGallery({ isLoading, fetchedImages, authToken }) {
     const imageElements = fetchedImages.map((image) => (
         <div key={image.id} className="ImageGallery-photo-container">
             <Link to={`/images/${image.id}`}>
@@ -17,6 +18,9 @@ export function ImageGallery({ isLoading, fetchedImages }) {
             <div className="ImageGallery">
                 {imageElements}
             </div>
+
+            <h2>Upload Image</h2>
+            <ImageUploadForm authToken={authToken} />
         </>
     );
 }

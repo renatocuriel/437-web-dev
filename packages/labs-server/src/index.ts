@@ -24,12 +24,8 @@ async function setUpServer() {
     const app = express();
     app.use(express.json());
     app.use(express.static(staticDir));
-
-    app.get("/hello", (req: Request, res: Response) => {
-        console.log(`Received request for ${req.url}`);
-        res.send("Hello, World");
-    });
-
+    app.use("/uploads", express.static(process.env.IMAGE_UPLOAD_DIR || "uploads"));
+    
     registerAuthRoutes(app, mongoClient);
     app.use("/api/*", verifyAuthToken); // Apply the verifyAuthToken middleware to all routes under /api
 
