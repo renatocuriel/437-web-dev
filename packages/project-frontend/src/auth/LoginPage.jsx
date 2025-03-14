@@ -3,7 +3,7 @@ import { sendPostRequest } from "../utils/sendPostRequest.js";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
-export function LoginPage({ setAuthToken }) {
+export default function LoginPage({ setAuthToken }) {
     const navigate = useNavigate();
 
     async function handleLogin(data) {
@@ -23,9 +23,9 @@ export function LoginPage({ setAuthToken }) {
     }
 
     return (
-        <div className="flex flex-col items-center mt-6 md:mt-0">
-            <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+        <div className="flex flex-col md:flex-row justify-center items-center min-h-screen p-6">
             <div className="bg-container p-6 w-full max-w-md border-highlight rounded-lg">
+                <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
                 <UsernamePasswordForm onSubmit={handleLogin} />
                 <p className="text-center mt-4 text-gray-600 dark:text-gray-300">
                     Don't have an account? <Link to="/register" className="text-blue-500 hover:underline">Register here</Link>

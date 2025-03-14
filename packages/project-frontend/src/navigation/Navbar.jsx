@@ -1,13 +1,15 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router";
 import DarkModeToggle from "../components/DarkModeToggle.jsx";
 
-const Navbar = () => {
+const Navbar = ( {onLogout} ) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
   const location = useLocation();
-
+  const navigate = useNavigate();
+  
   const linkClass = (path) =>
     `block py-2 px-4 rounded ${
       location.pathname === path
@@ -59,11 +61,22 @@ const Navbar = () => {
 
       {menuOpen && (
         <div ref={dropdownRef} className="absolute top-13 left-0 w-full bg-container text-gray-900 dark:text-white p-4 border-highlight shadow-custom">
-        <Link to="/" className={linkClass("/")} onClick={() => setMenuOpen(false)}>Dashboard</Link>
-        <Link to="/currently-reading" className={linkClass("/currently-reading")} onClick={() => setMenuOpen(false)}>Currently Reading</Link>
-        <Link to="/suggested-books" className={linkClass("/suggested-books")} onClick={() => setMenuOpen(false)}>Suggested Books</Link>
-        <Link to="/my-lists" className={linkClass("/my-lists")} onClick={() => setMenuOpen(false)}>My Lists</Link>
-        <Link to="/profile" className={linkClass("/profile")} onClick={() => setMenuOpen(false)}>Profile</Link>
+          <Link to="/" className={linkClass("/")} onClick={() => setMenuOpen(false)}>Dashboard</Link>
+          <Link to="/currently-reading" className={linkClass("/currently-reading")} onClick={() => setMenuOpen(false)}>Currently Reading</Link>
+          <Link to="/suggested-books" className={linkClass("/suggested-books")} onClick={() => setMenuOpen(false)}>Suggested Books</Link>
+          <Link to="/my-lists" className={linkClass("/my-lists")} onClick={() => setMenuOpen(false)}>My Lists</Link>
+          <Link to="/profile" className={linkClass("/profile")} onClick={() => setMenuOpen(false)}>Profile</Link>
+
+          {/* Logout Button */}
+          <button 
+            onClick={() => {
+              onLogout();
+              navigate("/login");
+            }} 
+            className="mt-4 w-full py-2 rounded-lg bg-red-400 text-white hover:bg-red-500 transition"
+          >
+            Logout
+          </button>
         </div>
       )}
     </nav>

@@ -1,8 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router";
 import DarkModeToggle from "../components/DarkModeToggle.jsx";
 
-const Sidebar = () => {
+const Sidebar = ( {onLogout} ) => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const linkClass = (path) =>
     `block py-2 px-4 rounded ${
@@ -34,8 +36,19 @@ const Sidebar = () => {
         <Link to="/profile" className={linkClass("/profile")}>Profile</Link>
       </nav>
 
-      <div className="flex justify-center">
+      <div className="mt-auto flex flex-col gap-3 ">
         <DarkModeToggle />
+
+        {/* Logout Button */}
+        <button 
+          onClick={() => {
+            onLogout();
+            navigate("/login");
+          }} 
+          className="w-full py-2 rounded-lg bg-red-400 text-white hover:bg-red-500 transition"
+        >
+          Logout
+        </button>
       </div>
     </aside>
   );
