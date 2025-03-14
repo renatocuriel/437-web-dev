@@ -1,0 +1,26 @@
+### 🔹 Register a New User
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "securepassword123"
+}
+
+### 🔹 Login and Get JWT Token
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "securepassword123"
+}
+
+### 🔹 Test Unauthorized API Access (should fail)
+GET http://localhost:3000/api/protected-route
+Content-Type: application/json
+
+### 🔹 Test Authorized API Access (replace `YOUR_TOKEN_HERE` with the token from login response)
+GET http://localhost:3000/api/protected-route
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzQxOTg2MTgxLCJleHAiOjE3NDIwNzI1ODF9.su4fSrzVT-7frbUsI2ag-KGD2YJr-M8imbqoP0V01B0
