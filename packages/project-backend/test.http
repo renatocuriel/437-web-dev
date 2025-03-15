@@ -39,7 +39,7 @@ Authorization: Bearer {{authToken2}}
 ### 📚 BOOKS API
 
 ### 🔹 Search for Books in Google Books API
-GET http://localhost:3000/api/google-books/search?q=Design Patterns
+GET http://localhost:3000/api/google-books/search?q=jurassic park
 Authorization: Bearer {{authToken}}
 
 ### 🔹 Add a New Book to Database
