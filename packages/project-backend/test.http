@@ -56,6 +56,20 @@ Authorization: Bearer {{authToken}}
   "description": "A classic book on programming best practices."
 }
 
+### 🔹 Add a New Book to Database (User 1)
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "Clean Code",
+  "author": ["Robert C. Martin"],
+  "coverImage": "https://example.com/clean-code.jpg",
+  "genre": ["Software Engineering"],
+  "totalPages": 464,
+  "description": "A handbook of agile software craftsmanship, focusing on writing clean, maintainable code."
+}
+
 ### 🔹 Add a New Book to Database 2
 POST http://localhost:3000/api/books
 Content-Type: application/json
@@ -69,6 +83,24 @@ Authorization: Bearer {{authToken2}}
   "totalPages": 100,
   "description": "You know what it is."
 }
+
+### 🔹 Add a New Book to Database (User 2)
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer {{authToken2}}
+
+{
+  "title": "System Design Interview",
+  "author": ["Alex Xu"],
+  "coverImage": "https://example.com/system-design.jpg",
+  "genre": ["Software Architecture"],
+  "totalPages": 320,
+  "description": "A comprehensive guide to system design interviews with real-world examples and trade-offs."
+}
+
+### GET ALL BOOKS
+GET http://localhost:3000/api/books
+Authorization: Bearer {{authToken}}
 
 ################################################################
 ### 📖 CURRENTLY READING API
@@ -170,11 +202,75 @@ Authorization: Bearer {{authToken}}
 GET http://localhost:3000/api/finished-books
 Authorization: Bearer {{authToken}}
 
-### 🔹 Mark a Book as Finished
-POST http://localhost:3000/api/finished-books
+#################################################################
+### 📂 LISTS API
+
+### Get All Lists for the Logged-in User 1
+GET http://localhost:3000/api/lists
+Authorization: Bearer {{authToken}}
+
+### Get All Lists for the Logged-in User 2
+GET http://localhost:3000/api/lists
+Authorization: Bearer {{authToken2}}
+
+### Create a New List 1
+POST http://localhost:3000/api/lists
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "bookId": "BOOK_OBJECT_ID_HERE"
+  "listName": "Favorites"
 }
+
+### Create a New List 2
+POST http://localhost:3000/api/lists
+Content-Type: application/json
+Authorization: Bearer {{authToken2}}
+
+{
+  "listName": "Finance"
+}
+
+### Add a Book to a List 11
+POST http://localhost:3000/api/lists/67d55bde6dd2bb4c780a8fdc/add
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "bookId": "67d54577ee8356299149f48d"
+}
+
+### Add a Book to a List 12
+POST http://localhost:3000/api/lists/67d55bde6dd2bb4c780a8fdc/add
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "bookId": "67d55ca36dd2bb4c780a8fe2"
+}
+
+### Add a Book to a List 21
+POST http://localhost:3000/api/lists/67d55ec534c858953ed8b77f/add
+Content-Type: application/json
+Authorization: Bearer {{authToken2}}
+
+{
+  "bookId": "67d547cafa38ac2623eb0179"
+}
+
+### Add a Book to a List 22
+POST http://localhost:3000/api/lists/67d55ec534c858953ed8b77f/add
+Content-Type: application/json
+Authorization: Bearer {{authToken2}}
+
+{
+  "bookId": "67d55cb06dd2bb4c780a8fe5"
+}
+
+### Remove a Book from a List
+DELETE http://localhost:3000/api/lists/67d55be56dd2bb4c780a8fdf/book/67d55cb06dd2bb4c780a8fe5
+Authorization: Bearer {{authToken2}}
+
+### Delete a List
+DELETE http://localhost:3000/api/lists/67d55be56dd2bb4c780a8fdf
+Authorization: Bearer {{authToken2}}
