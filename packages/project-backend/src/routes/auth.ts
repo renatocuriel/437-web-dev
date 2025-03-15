@@ -160,7 +160,10 @@ export function verifyAuthToken(req: Request, res: Response, next: NextFunction)
             res.status(403).json({ error: "Forbidden", message: "Invalid token" });
             return;
         }
+        if (decoded) {
         res.locals.token = decoded;
+        console.log("🔓 Token verified:", decoded);
+        }
         next(); // ✅ Token valid, proceed to the next middleware or route handler
     });
 }

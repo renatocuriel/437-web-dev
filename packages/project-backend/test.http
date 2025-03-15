@@ -1,6 +1,6 @@
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzQyMDA0ODg4LCJleHAiOjE3NDIwOTEyODh9.NeKAuNGTdDVvCfNGkdEXiQOcR9X2y-A_GE0g4m8yXAQ
-
-### 🔹 Register a New User
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzQyMDI5NDQ2LCJleHAiOjE3NDIxMTU4NDZ9.J4PqU1SgC68TlxAm91MufoW4I-wFZRtieNyhUkiThHQ
+@authToken2 = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyMiIsImlhdCI6MTc0MjAyOTUyMSwiZXhwIjoxNzQyMTE1OTIxfQ.51j3byul4FYqiJfjpv8IG6FQFeyj-Kp75j3up4ykc3Q
+### 🔹 Register a New User 1
 POST http://localhost:3000/auth/register
 Content-Type: application/json
 
@@ -9,12 +9,21 @@ Content-Type: application/json
   "password": "securepassword123"
 }
 
+### 🔹 Register a New User 2
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser2",
+  "password": "securepassword123"
+}
+
 ### 🔹 Login and Get JWT Token
 POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "username": "testuser",
+  "username": "testuser2",
   "password": "securepassword123"
 }
 
@@ -24,7 +33,7 @@ Content-Type: application/json
 
 ### 🔹 Fetch User Data (Verify it was added to the users collection)
 GET http://localhost:3000/api/users/me
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{authToken2}}
 
 ################################################################
 ### 📚 BOOKS API
@@ -47,26 +56,50 @@ Authorization: Bearer {{authToken}}
   "description": "A classic book on programming best practices."
 }
 
-### 🔹 Get All Books
-GET http://localhost:3000/api/books
-Authorization: Bearer {{authToken}}
+### 🔹 Add a New Book to Database 2
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer {{authToken2}}
+
+{
+  "title": "Test 2 book ",
+  "author": ["Diego Curiel"],
+  "coverImage": "https://example.com/book-cover.jpg",
+  "genre": ["Backend Dev"],
+  "totalPages": 100,
+  "description": "You know what it is."
+}
 
 ################################################################
 ### 📖 CURRENTLY READING API
 
-### 🔹 Set Currently Reading Book
+### 🔹 Set Currently Reading Book1
 POST http://localhost:3000/api/currently-reading
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "bookId": "67d4e2e054950926c08c9880",
+  "bookId": "67d54577ee8356299149f48d",
   "currentPage": 50
 }
 
-### 🔹 Get Currently Reading Book
+### 🔹 Set Currently Reading Book2
+POST http://localhost:3000/api/currently-reading
+Content-Type: application/json
+Authorization: Bearer {{authToken2}}
+
+{
+  "bookId": "67d547cafa38ac2623eb0179",
+  "currentPage": 50
+}
+
+### 🔹 Get Currently Reading Book 1
 GET http://localhost:3000/api/currently-reading
 Authorization: Bearer {{authToken}}
+
+### 🔹 Get Currently Reading Book 2
+GET http://localhost:3000/api/currently-reading
+Authorization: Bearer {{authToken2}}
 
 ### 🔹 Update Current Page in Currently Reading
 PATCH http://localhost:3000/api/currently-reading
@@ -74,12 +107,16 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "currentPage": 100
+  "currentPage": 75
 }
 
-### 🔹 Finish Reading (Move to Finished Books)
+### 🔹 Finish Reading (Move to Finished Books) 1
 DELETE http://localhost:3000/api/currently-reading
 Authorization: Bearer {{authToken}}
+
+### 🔹 Finish Reading (Move to Finished Books) 2
+DELETE http://localhost:3000/api/currently-reading
+Authorization: Bearer {{authToken2}}
 
 ################################################################
 ### 📂 LISTS API

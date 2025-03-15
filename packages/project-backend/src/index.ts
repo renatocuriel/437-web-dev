@@ -124,10 +124,7 @@ async function setUpServer() {
 
     try {
         console.log("Attempting MongoDB connection...");
-        await mongoose.connect(connectionString, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        } as mongoose.ConnectOptions);
+        await mongoose.connect(connectionString);
         console.log("✅ Connected to MongoDB");
 
         const app = express();
