@@ -24,7 +24,7 @@ const CurrentlyReading = () => {
       <div className="w-32 md:w-48 flex-shrink-0">
         <img src={book.bookId.coverImage} alt={book.bookId.title} className="w-full h-auto aspect-[2/3] object-cover border-highlight rounded-xl shadow-md" />
       </div>
-      <div className="flex flex-col text-center items-center md:items-start mt-4 md:ml-6 w-full">
+      <div className="flex flex-col text-center items-center mt-4 md:ml-6 w-full">
         <h2 className="text-xl font-bold pb-6">Currently Reading</h2>
         <p className="font-semibold pb-4">{book.bookId.title}</p>
         <p className="text-sm text-gray-600 dark:text-gray-300 pb-2">{book.bookId.author}</p>
