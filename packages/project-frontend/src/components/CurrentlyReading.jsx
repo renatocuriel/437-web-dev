@@ -9,6 +9,7 @@ const CurrentlyReading = () => {
       const data = await fetchCurrentlyReading();
       if (data) {
         setBook(data);
+        console.log(data);
       }
     };
     loadBook();
@@ -16,17 +17,17 @@ const CurrentlyReading = () => {
 
   if (!book) return <p className="text-center text-gray-500">No book currently being read.</p>;
 
-  const progress = Math.round((book.currentPage / book.totalPages) * 100);
+  const progress = Math.round((book.currentPage / book.bookId.totalPages) * 100);
 
   return (
     <div className="flex flex-col md:flex-row items-center w-full h-full">
       <div className="w-32 md:w-48 flex-shrink-0">
-        <img src={book.cover} alt={book.title} className="w-full h-auto aspect-[2/3] object-cover border-highlight rounded-xl shadow-md" />
+        <img src={book.bookId.coverImage} alt={book.bookId.title} className="w-full h-auto aspect-[2/3] object-cover border-highlight rounded-xl shadow-md" />
       </div>
-      <div className="flex flex-col items-center md:items-start mt-4 md:ml-6 w-full">
-        <h2 className="text-xl font-bold">Currently Reading</h2>
-        <p className="font-semibold">{book.title}</p>
-        <p className="text-sm text-gray-600 dark:text-gray-300">{book.author}</p>
+      <div className="flex flex-col text-center items-center md:items-start mt-4 md:ml-6 w-full">
+        <h2 className="text-xl font-bold pb-6">Currently Reading</h2>
+        <p className="font-semibold pb-4">{book.bookId.title}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-300 pb-2">{book.bookId.author}</p>
         <div className="mt-2 w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2">
           <div className="bg-green-500 h-2 rounded-full" style={{ width: `${progress}%` }}></div>
         </div>
