@@ -4,6 +4,7 @@ const ListSchema = new mongoose.Schema(
   {
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     listName: { type: String, required: true }, // User-defined name
+    description: { type: String, default: "" }, // Optional description
     books: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }] // Array of book references
   },
   { collection: process.env.LISTS_COLLECTION_NAME }

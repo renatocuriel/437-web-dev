@@ -9,7 +9,7 @@
     "moduleResolution": "NodeNext",
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "../project-frontend/src/providers/BookProvider.ts", "../project-frontend/src/providers/CurrentlyReadingProvider.ts", "../project-frontend/src/providers/ListProvider.ts"],
   "exclude": ["node_modules"],
   "lib": ["esnext"]
 }

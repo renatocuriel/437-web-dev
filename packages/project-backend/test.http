@@ -219,7 +219,8 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "listName": "Favorites"
+  "listName": "Favorites",
+  "description": "My favorite books"
 }
 
 ### Create a New List 2

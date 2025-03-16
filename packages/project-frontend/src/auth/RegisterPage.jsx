@@ -1,5 +1,5 @@
 import { UsernamePasswordForm } from "./UsernamePasswordForm.jsx";
-import { sendPostRequest } from "../utils/sendPostRequest.js";
+import { sendPostRequest } from "../providers/sendPostRequest.js";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 

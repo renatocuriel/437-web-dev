@@ -8,13 +8,13 @@ const router = express.Router();
 // ➕ Create a new list
 router.post("/", verifyAuthToken, async (req, res) => {
     try {
-        const { listName } = req.body;
+        const { listName, description } = req.body;
         const user = await User.findOne({ username: res.locals.token.username });
         const userId = user?._id;
-
+        console.log("user asked for lists", res.locals.token.username);
         await List.findOneAndUpdate(
             { listName },
-            { userId, listName },
+            { userId, listName, description },
             { upsert: true, new: true}
         );
 

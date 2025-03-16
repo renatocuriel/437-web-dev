@@ -7,6 +7,7 @@ const router = express.Router();
 
 const GOOGLE_BOOKS_API_URL = "https://www.googleapis.com/books/v1/volumes";
 const API_KEY = process.env.GOOGLE_BOOKS_API_KEY; // Make sure to add this to .env
+const NUM_RESULTS = 36; // Number of books to fetch
 
 // 📚 Search books (title, author, or genre)
 router.get("/search", async (req, res) => {
@@ -22,7 +23,7 @@ router.get("/search", async (req, res) => {
             params: {
                 q,
                 startIndex,
-                maxResults: 12, // Fetch 12 books at a time
+                maxResults: NUM_RESULTS, // Fetch NUM_RESULTS books at a time
                 key: API_KEY,
             },
         });

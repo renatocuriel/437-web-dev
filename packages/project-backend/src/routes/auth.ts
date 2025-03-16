@@ -147,6 +147,7 @@ export function verifyAuthToken(req: Request, res: Response, next: NextFunction)
     console.log("🔐 Received request to protected route:", req.path);
     console.log("📜 Headers received:", req.headers);
 
+
     const authHeader = req.get("Authorization");
     const token = authHeader && authHeader.split(" ")[1]; // Extract token after "Bearer "
 
