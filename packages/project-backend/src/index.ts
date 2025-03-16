@@ -130,6 +130,8 @@ async function setUpServer() {
         const app = express();
         app.use(express.json());
         app.use(express.static(staticDir));
+        app.use("/userProfilePics", express.static("userProfilePics"));
+
 
         // ✅ Register Authentication Routes (Public)
         registerAuthRoutes(app); // 🔹 Removed MongoClient parameter

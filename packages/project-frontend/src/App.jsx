@@ -90,7 +90,7 @@ function App() {
                     <Route path="/currently-reading" element={<ProtectedRoute authToken={authToken}><CurrentlyReadingPage /></ProtectedRoute>} />
                     <Route path="/suggested-books" element={<ProtectedRoute authToken={authToken}><SuggestedBooksPage /></ProtectedRoute>} />
                     <Route path="/my-lists" element={<ProtectedRoute authToken={authToken}><MyListsPage /></ProtectedRoute>} />
-                    <Route path="/profile" element={<ProtectedRoute authToken={authToken}><ProfilePage /></ProtectedRoute>} />
+                    <Route path="/profile" element={<ProtectedRoute authToken={authToken}><ProfilePage logout={handleLogout}/></ProtectedRoute>} />
                   </Routes>
                 </div>
               </div>

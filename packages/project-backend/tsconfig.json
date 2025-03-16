@@ -10,6 +10,6 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*.ts", "../project-frontend/src/providers/BookProvider.ts", "../project-frontend/src/providers/CurrentlyReadingProvider.ts", "../project-frontend/src/providers/ListProvider.ts"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "../project-frontend"],
   "lib": ["esnext"]
 }
