@@ -71,3 +71,25 @@ export async function fetchRecommendedBooks() {
     return { books: [], genre: null };
   }
 }
+
+export const fetchFinishedBooks = async () => {
+  try {
+      const response = await fetch("/api/finished-books", {
+          method: "GET",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          credentials: "include", // Ensure cookies (auth token) are sent
+      });
+
+      if (!response.ok) {
+          throw new Error("Failed to fetch finished books");
+      }
+
+      const data = await response.json();
+      return data.books || []; // Ensure it returns an array
+  } catch (error) {
+      console.error("Error fetching finished books:", error);
+      return [];
+  }
+};
