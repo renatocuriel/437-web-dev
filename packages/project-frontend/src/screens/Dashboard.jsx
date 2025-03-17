@@ -47,10 +47,10 @@ const Dashboard = () => {
         </div>
         
         {/* To Read and Finished Books */}
-        {/* <div className="bg-container md:col-span-2 space-y-8">
+        <div className="bg-container md:col-span-2 space-y-8">
           <BookLists /> 
           <FinishedBooks />
-        </div> */}
+        </div>
       </div>
 
       {/* Profile Card at the bottom */}

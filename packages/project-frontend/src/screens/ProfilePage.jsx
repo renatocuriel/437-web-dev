@@ -68,6 +68,8 @@ const ProfilePage = ({ logout }) => {
             setProfilePic(result.imageUrl);
             setMessage("Profile picture updated.");
         }
+        const newProfilePic = await fetchProfilePicture();
+        setProfilePic(newProfilePic);
     };
 
     return (

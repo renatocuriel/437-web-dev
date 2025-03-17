@@ -78,6 +78,7 @@ export const fetchFinishedBooks = async () => {
           method: "GET",
           headers: {
               "Content-Type": "application/json",
+              "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
           },
           credentials: "include", // Ensure cookies (auth token) are sent
       });
@@ -87,6 +88,7 @@ export const fetchFinishedBooks = async () => {
       }
 
       const data = await response.json();
+      console.log("Finished books:", data.books);
       return data.books || []; // Ensure it returns an array
   } catch (error) {
       console.error("Error fetching finished books:", error);

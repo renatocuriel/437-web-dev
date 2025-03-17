@@ -244,7 +244,7 @@ const SuggestedBooksPage = () => {
                           key={list._id}
                           className="block w-full text-center p-2 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-lg cursor-pointer"
                           onClick={() => {
-                            addBookToList(list._id, book);
+                            handleAddBookToList(book, list._id);
                             setDropdownOpen(null);
                           }}
                         >
