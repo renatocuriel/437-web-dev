@@ -139,7 +139,7 @@ router.get("/profile-pic", verifyAuthToken, async (req, res) => {
         // const profileImageUrl = `https://${req.get("host")}${user.profileImage}`;
         // const profileImageUrl = `https://dicuriel.csse.dev${user.profileImage.replace(/^http:\/\/.*?:3000/, "")}`;
         const profileImageUrl = `https://${req.get("host")}${user.profileImage.replace(":3000", "")}`;
-
+        console.log("Profile Image URL:", profileImageUrl);
 
         res.json({ profileImage: profileImageUrl });
     } catch (err) {
