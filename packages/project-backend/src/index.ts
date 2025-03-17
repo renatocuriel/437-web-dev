@@ -133,13 +133,8 @@ async function setUpServer() {
         app.use(express.static(staticDir));
         // app.use("/userProfilePics", express.static(sshProfilePicsPath));
         // ✅ Force HTTPS if needed
-        app.use("/userProfilePics", (req, res, next) => {
-            if (req.secure) {
-                express.static(profilePicsPath)(req, res, next);
-            } else {
-                res.redirect(`https://${req.get("host")}${req.url}`);
-            }
-        });
+        app.use("/userProfilePics", express.static(profilePicsPath));
+
 
 
         // ✅ Register Authentication Routes (Public)

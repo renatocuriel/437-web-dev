@@ -75,7 +75,9 @@ export const fetchProfilePicture = async () => {
         });
         if (!response.ok) throw new Error("Failed to fetch profile picture");
         const data = await response.json();
-        return data.profileImage;
+        // return data.profileImage;
+        return data.profileImage.replace("http://", "https://").replace(":3000", "");
+
     } catch (error) {
         console.error("Error fetching profile picture:", error);
         return "/userProfilePics/default_profile.jpg"; // Fallback image
