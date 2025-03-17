@@ -135,7 +135,9 @@ router.get("/profile-pic", verifyAuthToken, async (req, res) => {
         }
 
         // ✅ Ensure correct absolute URL
-        const profileImageUrl = `${req.protocol}://${req.get("host")}${user.profileImage}`;
+        // const profileImageUrl = `${req.protocol}://${req.get("host")}${user.profileImage}`;
+        const profileImageUrl = `https://${req.get("host")}${user.profileImage}`;
+
         res.json({ profileImage: profileImageUrl });
     } catch (err) {
         console.error("Error fetching profile picture:", err);
