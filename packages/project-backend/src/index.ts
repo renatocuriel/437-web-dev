@@ -112,6 +112,7 @@ dotenv.config(); // Load environment variables
 
 const PORT = process.env.PORT || 3000;
 const staticDir = process.env.STATIC_DIR || "public";
+const sshProfilePicsPath = path.resolve("/home/dicuriel/437-web-dev/packages/project-backend/userProfilePics");
 
 async function setUpServer() {
     const { MONGO_USER, MONGO_PWD, MONGO_CLUSTER, DB_NAME } = process.env;
@@ -130,7 +131,7 @@ async function setUpServer() {
         const app = express();
         app.use(express.json());
         app.use(express.static(staticDir));
-        app.use("/userProfilePics", express.static("userProfilePics"));
+        app.use("/userProfilePics", express.static(sshProfilePicsPath));
 
 
         // ✅ Register Authentication Routes (Public)
