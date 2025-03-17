@@ -8,14 +8,14 @@ const MyListsPage = () => {
   const [newListDesc, setNewListDesc] = useState("");
 
   // 🔄 Fetch lists on mount
-  useEffect(() => {
-    loadLists();
-  }, []);
-
   const loadLists = async () => {
     const data = await fetchLists();
     setLists(data);
   };
+
+  useEffect(() => {
+    loadLists();
+  }, []);
 
   // ➕ Create a new list
   const handleCreateList = async () => {

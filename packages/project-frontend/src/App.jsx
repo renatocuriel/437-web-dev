@@ -86,7 +86,7 @@ function App() {
 
                 <div className="p-6 md:p-10 mt-6 md:mt-0">
                   <Routes>
-                    <Route path="/" element={<ProtectedRoute authToken={authToken}><Dashboard /></ProtectedRoute>} />
+                    <Route path="/" element={<ProtectedRoute authToken={authToken}><Dashboard username={userName} /></ProtectedRoute>} />
                     <Route path="/currently-reading" element={<ProtectedRoute authToken={authToken}><CurrentlyReadingPage /></ProtectedRoute>} />
                     <Route path="/suggested-books" element={<ProtectedRoute authToken={authToken}><SuggestedBooksPage /></ProtectedRoute>} />
                     <Route path="/my-lists" element={<ProtectedRoute authToken={authToken}><MyListsPage /></ProtectedRoute>} />
