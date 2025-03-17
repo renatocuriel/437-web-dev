@@ -136,7 +136,9 @@ router.get("/profile-pic", verifyAuthToken, async (req, res) => {
 
         // ✅ Ensure correct absolute URL
         // const profileImageUrl = `${req.protocol}://${req.get("host")}${user.profileImage}`;
-        const profileImageUrl = `https://${req.get("host")}${user.profileImage}`;
+        // const profileImageUrl = `https://${req.get("host")}${user.profileImage}`;
+        const profileImageUrl = `https://dicuriel.csse.dev${user.profileImage.replace(/^http:\/\/.*?:3000/, "")}`;
+
 
         res.json({ profileImage: profileImageUrl });
     } catch (err) {
