@@ -256,7 +256,7 @@ const SuggestedBooksPage = () => {
 
                   <button 
                     className="btn-primary w-full mt-3"
-                    onClick={() => setCurrentlyReading(book)}
+                    onClick={() => handleSetCurrentlyReading(book)}
                   >
                     Start Reading
                   </button>
