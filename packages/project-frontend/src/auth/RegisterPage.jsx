@@ -23,7 +23,9 @@ export default function RegisterPage({ setAuthToken }) {
     }
 
     return (
-        <div className="flex flex-col md:flex-row justify-center items-center min-h-screen p-6">
+        <div className="flex flex-col justify-center items-center min-h-screen p-6">
+            <h1 className="text-4xl font-bold text-center mb-6">Welcome to BookTracker!</h1>
+
             <div className="bg-container p-6 w-full max-w-md border-highlight rounded-lg">
                 <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
                 <UsernamePasswordForm onSubmit={handleRegister} />
